@@ -178,6 +178,22 @@ class Ads_Txt_Core {
 	}
 
 	/**
+	 * Safe check if root file exists using WP Filesystem to avoid direct path blocks (e.g. open_basedir).
+	 */
+	public function file_exists_safe( $filename ) {
+		global $wp_filesystem;
+
+		if ( empty( $wp_filesystem ) || ! is_object( $wp_filesystem ) ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			if ( ! WP_Filesystem() || ! is_object( $wp_filesystem ) ) {
+				return false;
+			}
+		}
+
+		return $wp_filesystem->exists( ABSPATH . $filename );
+	}
+
+	/**
 	 * Get detailed statistics.
 	 */
 	public function get_stats() {
@@ -186,7 +202,7 @@ class Ads_Txt_Core {
 
 		return array(
 			'ads' => array(
-				'exists' => file_exists( ABSPATH . 'ads.txt' ),
+				'exists' => $this->file_exists_safe( 'ads.txt' ),
 				'writable' => $this->check_write_permission( 'ads.txt' ),
 				'entries' => $this->count_entries( $ads_content ),
 				'updated' => get_option( 'ads_txt_manager_ads_txt_updated', 'Never' ),
@@ -194,7 +210,7 @@ class Ads_Txt_Core {
 				'url' => home_url( '/ads.txt' ),
 			),
 			'app_ads' => array(
-				'exists' => file_exists( ABSPATH . 'app-ads.txt' ),
+				'exists' => $this->file_exists_safe( 'app-ads.txt' ),
 				'writable' => $this->check_write_permission( 'app-ads.txt' ),
 				'entries' => $this->count_entries( $app_ads_content ),
 				'updated' => get_option( 'ads_txt_manager_app_ads_txt_updated', 'Never' ),

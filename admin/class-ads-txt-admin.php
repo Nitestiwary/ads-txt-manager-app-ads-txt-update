@@ -52,7 +52,7 @@ class Ads_Txt_Admin {
 	 * Enqueue stylesheet and JavaScript.
 	 */
 	public function enqueue_assets( $hook ) {
-		if ( 'toplevel_page_ads-txt-manager' !== $hook ) {
+		if ( 'toplevel_page_ads-txt-manager' !== $hook && 'toplevel_page_ads-txt-main' !== $hook ) {
 			return;
 		}
 
