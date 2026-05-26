@@ -9,7 +9,7 @@
  * Author:      Monetiscope
  * Author URI:  https://monetiscope.com
  * License:     GPLv2 or later
- * Text Domain: ads.txt-main
+ * Text Domain: ads-txt-main
  * Requires at least: 6.0
  * Requires PHP:      7.4
  */
@@ -93,9 +93,10 @@ function ads_txt_manager_parse_request( $wp ) {
 	if ( ! empty( $wp->matched_rule ) && ( strpos( $wp->matched_rule, '^ads\.txt$' ) !== false || strpos( $wp->matched_rule, '^app-ads\.txt$' ) !== false ) ) {
 		$trigger = get_query_var( 'ads_txt_trigger' );
 		if ( ! $trigger ) {
-			if ( strpos( $_SERVER['REQUEST_URI'], 'app-ads.txt' ) !== false ) {
+			$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+			if ( strpos( $request_uri, 'app-ads.txt' ) !== false ) {
 				$trigger = 2;
-			} elseif ( strpos( $_SERVER['REQUEST_URI'], 'ads.txt' ) !== false ) {
+			} elseif ( strpos( $request_uri, 'ads.txt' ) !== false ) {
 				$trigger = 1;
 			}
 		}

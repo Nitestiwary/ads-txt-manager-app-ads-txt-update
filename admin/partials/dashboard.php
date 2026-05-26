@@ -29,18 +29,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 
 	<!-- Alert Messages -->
-	<?php if ( isset( $_GET['success'] ) ) : ?>
+	<?php
+	$ads_txt_manager_success_type = filter_input( INPUT_GET, 'success', FILTER_SANITIZE_KEY );
+	if ( $ads_txt_manager_success_type ) :
+	?>
 		<div class="notice notice-success is-dismissible atm-notice">
 			<p>
 				<?php
-				$success_type = sanitize_text_field( $_GET['success'] );
-				if ( 'restore' === $success_type ) {
+				if ( 'restore' === $ads_txt_manager_success_type ) {
 					esc_html_e( 'Backup restored successfully.', 'ads.txt-main' );
-				} elseif ( 'import' === $success_type ) {
+				} elseif ( 'import' === $ads_txt_manager_success_type ) {
 					esc_html_e( 'Settings and files imported successfully.', 'ads.txt-main' );
-				} elseif ( 'settings' === $success_type ) {
+				} elseif ( 'settings' === $ads_txt_manager_success_type ) {
 					esc_html_e( 'Settings updated successfully.', 'ads.txt-main' );
-				} elseif ( 'reset' === $success_type ) {
+				} elseif ( 'reset' === $ads_txt_manager_success_type ) {
 					esc_html_e( 'Plugin reset successfully. All files and options cleared.', 'ads.txt-main' );
 				} else {
 					esc_html_e( 'Changes saved successfully.', 'ads.txt-main' );
@@ -50,9 +52,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 	<?php endif; ?>
 
-	<?php if ( isset( $_GET['error'] ) ) : ?>
+	<?php
+	$ads_txt_manager_error_message = filter_input( INPUT_GET, 'error', FILTER_DEFAULT );
+	if ( $ads_txt_manager_error_message ) :
+	?>
 		<div class="notice notice-error is-dismissible atm-notice">
-			<p><?php echo esc_html( urldecode( sanitize_text_field( $_GET['error'] ) ) ); ?></p>
+			<p><?php echo esc_html( urldecode( $ads_txt_manager_error_message ) ); ?></p>
 		</div>
 	<?php endif; ?>
 

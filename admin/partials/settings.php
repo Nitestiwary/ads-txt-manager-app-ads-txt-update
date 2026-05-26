@@ -9,11 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$atm_settings = get_option( 'ads_txt_manager_settings', array() );
-$atm_enable_validation = isset( $atm_settings['enable_validation'] ) ? $atm_settings['enable_validation'] : '1';
-$atm_enable_backup = isset( $atm_settings['enable_backup'] ) ? $atm_settings['enable_backup'] : '1';
-$atm_auto_validation = isset( $atm_settings['auto_validation'] ) ? $atm_settings['auto_validation'] : '1';
-$atm_duplicate_warning = isset( $atm_settings['duplicate_warning'] ) ? $atm_settings['duplicate_warning'] : '1';
+$ads_txt_manager_settings = get_option( 'ads_txt_manager_settings', array() );
+$ads_txt_manager_enable_validation = isset( $ads_txt_manager_settings['enable_validation'] ) ? $ads_txt_manager_settings['enable_validation'] : '1';
+$ads_txt_manager_enable_backup = isset( $ads_txt_manager_settings['enable_backup'] ) ? $ads_txt_manager_settings['enable_backup'] : '1';
+$ads_txt_manager_auto_validation = isset( $ads_txt_manager_settings['auto_validation'] ) ? $ads_txt_manager_settings['auto_validation'] : '1';
+$ads_txt_manager_duplicate_warning = isset( $ads_txt_manager_settings['duplicate_warning'] ) ? $ads_txt_manager_settings['duplicate_warning'] : '1';
 ?>
 
 <div class="atm-section-header">
@@ -40,7 +40,7 @@ $atm_duplicate_warning = isset( $atm_settings['duplicate_warning'] ) ? $atm_sett
 						<th scope="row"><?php esc_html_e( 'Syntax Validation', 'ads.txt-main' ); ?></th>
 						<td>
 							<label class="atm-switch-label">
-								<input type="checkbox" name="enable_validation" value="1" <?php checked( $atm_enable_validation, '1' ); ?> />
+								<input type="checkbox" name="enable_validation" value="1" <?php checked( $ads_txt_manager_enable_validation, '1' ); ?> />
 								<span class="atm-switch-slider"></span>
 							</label>
 							<span class="description"><?php esc_html_e( 'Enable/disable detailed format verification.', 'ads.txt-main' ); ?></span>
@@ -50,7 +50,7 @@ $atm_duplicate_warning = isset( $atm_settings['duplicate_warning'] ) ? $atm_sett
 						<th scope="row"><?php esc_html_e( 'Automatic Backups', 'ads.txt-main' ); ?></th>
 						<td>
 							<label class="atm-switch-label">
-								<input type="checkbox" name="enable_backup" value="1" <?php checked( $atm_enable_backup, '1' ); ?> />
+								<input type="checkbox" name="enable_backup" value="1" <?php checked( $ads_txt_manager_enable_backup, '1' ); ?> />
 								<span class="atm-switch-slider"></span>
 							</label>
 							<span class="description"><?php esc_html_e( 'Save a backup history entry automatically before saving changes.', 'ads.txt-main' ); ?></span>
@@ -60,7 +60,7 @@ $atm_duplicate_warning = isset( $atm_settings['duplicate_warning'] ) ? $atm_sett
 						<th scope="row"><?php esc_html_e( 'Real-time Live Check', 'ads.txt-main' ); ?></th>
 						<td>
 							<label class="atm-switch-label">
-								<input type="checkbox" name="auto_validation" value="1" <?php checked( $atm_auto_validation, '1' ); ?> />
+								<input type="checkbox" name="auto_validation" value="1" <?php checked( $ads_txt_manager_auto_validation, '1' ); ?> />
 								<span class="atm-switch-slider"></span>
 							</label>
 							<span class="description"><?php esc_html_e( 'Run real-time checks in the editor text area while typing.', 'ads.txt-main' ); ?></span>
@@ -70,7 +70,7 @@ $atm_duplicate_warning = isset( $atm_settings['duplicate_warning'] ) ? $atm_sett
 						<th scope="row"><?php esc_html_e( 'Duplicate Entry Warnings', 'ads.txt-main' ); ?></th>
 						<td>
 							<label class="atm-switch-label">
-								<input type="checkbox" name="duplicate_warning" value="1" <?php checked( $atm_duplicate_warning, '1' ); ?> />
+								<input type="checkbox" name="duplicate_warning" value="1" <?php checked( $ads_txt_manager_duplicate_warning, '1' ); ?> />
 								<span class="atm-switch-slider"></span>
 							</label>
 							<span class="description"><?php esc_html_e( 'Highlight warnings if identical entries exist on multiple lines.', 'ads.txt-main' ); ?></span>

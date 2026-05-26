@@ -94,7 +94,27 @@ class Ads_Txt_Admin {
 	 * Register plugin settings.
 	 */
 	public function register_settings() {
-		register_setting( 'ads_txt_manager_settings_group', 'ads_txt_manager_settings' );
+		register_setting(
+			'ads_txt_manager_settings_group',
+			'ads_txt_manager_settings',
+			array(
+				'sanitize_callback' => array( $this, 'sanitize_settings' ),
+			)
+		);
+	}
+
+	/**
+	 * Sanitize options settings.
+	 */
+	public function sanitize_settings( $input ) {
+		$output = array();
+		if ( is_array( $input ) ) {
+			$output['enable_validation'] = isset( $input['enable_validation'] ) ? '1' : '0';
+			$output['enable_backup']     = isset( $input['enable_backup'] ) ? '1' : '0';
+			$output['auto_validation']   = isset( $input['auto_validation'] ) ? '1' : '0';
+			$output['duplicate_warning'] = isset( $input['duplicate_warning'] ) ? '1' : '0';
+		}
+		return $output;
 	}
 
 	/**
@@ -149,8 +169,15 @@ class Ads_Txt_Admin {
 				exit;
 
 			case 'import_settings':
-				if ( ! empty( $_FILES['import_file']['tmp_name'] ) ) {
-					$import_data = file_get_contents( $_FILES['import_file']['tmp_name'] );
+				$import_file = isset( $_FILES['import_file'] ) ? wp_unslash( $_FILES['import_file'] ) : array();
+				if ( ! empty( $import_file['tmp_name'] ) ) {
+					$tmp_path = sanitize_text_field( $import_file['tmp_name'] );
+					global $wp_filesystem;
+					if ( empty( $wp_filesystem ) ) {
+						require_once ABSPATH . 'wp-admin/includes/file.php';
+						WP_Filesystem();
+					}
+					$import_data = $wp_filesystem->get_contents( $tmp_path );
 					$decoded = json_decode( $import_data, true );
 					if ( is_array( $decoded ) ) {
 						if ( isset( $decoded['ads_txt'] ) ) {
@@ -218,7 +245,10 @@ class Ads_Txt_Admin {
 	 * Main wrapper rendering the dashboard admin screen.
 	 */
 	public function render_dashboard() {
-		$active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'dashboard';
+		$active_tab = filter_input( INPUT_GET, 'tab', FILTER_SANITIZE_KEY );
+		if ( ! $active_tab ) {
+			$active_tab = 'dashboard';
+		}
 		$stats = $this->core->get_stats();
 
 		// Branding Assets support compliant with WordPress guidelines with real-time timestamp cache buster

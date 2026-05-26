@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$atm_ads_content = get_option( 'ads_txt_manager_ads_txt', '' );
-$atm_settings = get_option( 'ads_txt_manager_settings', array() );
-$atm_auto_validate = isset( $atm_settings['auto_validation'] ) ? $atm_settings['auto_validation'] : '1';
+$ads_txt_manager_ads_content = get_option( 'ads_txt_manager_ads_txt', '' );
+$ads_txt_manager_settings = get_option( 'ads_txt_manager_settings', array() );
+$ads_txt_manager_auto_validate = isset( $ads_txt_manager_settings['auto_validation'] ) ? $ads_txt_manager_settings['auto_validation'] : '1';
 ?>
 
 <div class="atm-section-header">
@@ -39,8 +39,8 @@ $atm_auto_validate = isset( $atm_settings['auto_validation'] ) ? $atm_settings['
 				id="ads_txt_content" 
 				class="atm-code-editor" 
 				placeholder="google.com, pub-1020304050607080, DIRECT, f08c47fec0942fa0"
-				data-validate="<?php echo esc_attr( $atm_auto_validate ); ?>"
-			><?php echo esc_textarea( $atm_ads_content ); ?></textarea>
+				data-validate="<?php echo esc_attr( $ads_txt_manager_auto_validate ); ?>"
+			><?php echo esc_textarea( $ads_txt_manager_ads_content ); ?></textarea>
 		</div>
 
 		<!-- Live Validation Container -->

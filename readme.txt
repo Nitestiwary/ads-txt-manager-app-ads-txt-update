@@ -1,14 +1,15 @@
 === Ads.txt Manager - App-ads.txt Update ===
 Contributors: Monetiscope
-Tags: ads.txt, app-ads.txt, admob, adsense, google ad exchange, monetize, publisher, seo, ads.txt manager, verification, ad manager, open bidding, ad network, crawler, revenue uplift
+Tags: ads.txt, app-ads.txt, admob, adsense, monetiscope
 Requires at least: 6.0
-Tested up to: 6.4
+Tested up to: 6.7
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A lightweight, secure, and modern WordPress plugin to easily create, validate, manage, and update your ads.txt and app-ads.txt files directly from your dashboard without using FTP.
+Lightweight, secure plugin to easily manage, validate, and update your ads.txt and app-ads.txt files directly from your WordPress dashboard.
+
 
 == Description ==
 
