@@ -25,6 +25,9 @@ Whether you monetize with Google AdSense, AdMob, Google Ad Exchange, Unity Ads, 
 * **Import/Export Tooling:** Migrate your configurations easily by downloading and uploading structured JSON files.
 * **Lightweight & Secure:** Minimal footprint, optimized operations, strict capability requirements, and zero performance impact.
 
+= Third-Party Integration & Transparency Disclosure =
+To assist publishers in scaling their ad yield, this plugin features optional promotional banners linking directly to [Monetiscope](https://monetiscope.com), a premium monetization service. Clicking these banners redirects the user to their official contact page (https://monetiscope.com/contact/) where publishers can optionally request upgrades to premium Google Ad Exchange, SDK Ad Mediation stacks, or Open Bidding demand partners. Using these banners or contacting Monetiscope is completely optional and does not affect the core functionality of the plugin.
+
 == Installation ==
 
 1. Upload the entire `ads-txt-manager` folder to your `/wp-content/plugins/` directory, or search and install it directly via your WordPress Admin Plugins installer.

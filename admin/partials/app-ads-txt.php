@@ -23,7 +23,7 @@ $auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validat
 
 <!-- Promo Banner for App Publishers -->
 <div class="atm-promo-banner-container margin-bottom-20">
-	<a href="https://monetiscope.com" target="_blank" rel="noopener noreferrer">
+	<a href="https://monetiscope.com/contact/" target="_blank" rel="noopener noreferrer">
 		<img src="<?php echo esc_url( $banner_app ); ?>" alt="Uplift Your Ad Revenue upto 30% - Monetiscope App Monetization" class="atm-promo-banner-img" />
 	</a>
 </div>

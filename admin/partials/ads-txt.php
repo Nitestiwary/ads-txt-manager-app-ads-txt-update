@@ -23,7 +23,7 @@ $auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validat
 
 <!-- Promo Banner for Web Publishers -->
 <div class="atm-promo-banner-container margin-bottom-20">
-	<a href="https://monetiscope.com" target="_blank" rel="noopener noreferrer">
+	<a href="https://monetiscope.com/contact/" target="_blank" rel="noopener noreferrer">
 		<img src="<?php echo esc_url( $banner_web ); ?>" alt="Upgrade to Google Ad Exchange - Monetiscope" class="atm-promo-banner-img" />
 	</a>
 </div>

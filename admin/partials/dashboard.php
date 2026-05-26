@@ -198,7 +198,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<!-- Monetiscope Web Ad Exchange Integration Promo Card -->
 				<div class="atm-promo-section-card">
 					<div class="atm-promo-banner-container">
-						<a href="https://monetiscope.com" target="_blank" rel="noopener noreferrer">
+						<a href="https://monetiscope.com/contact/" target="_blank" rel="noopener noreferrer">
 							<img src="<?php echo esc_url( $banner_web ); ?>" alt="Upgrade to Google Ad Exchange" class="atm-promo-banner-img" />
 						</a>
 					</div>

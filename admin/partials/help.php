@@ -83,7 +83,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<li><strong><?php esc_html_e( 'Unified Analytics:', 'ads-txt-manager' ); ?></strong> <?php esc_html_e( 'Full dashboard breakdown of total daily active users, click-through rates, and revenue performance.', 'ads-txt-manager' ); ?></li>
 			</ul>
 			<p>
-				<a href="https://monetiscope.com" target="_blank" class="button button-primary button-hero">
+				<a href="https://monetiscope.com/contact/" target="_blank" class="button button-primary button-hero">
 					<?php esc_html_e( 'Start Monetizing Your Site / App Now', 'ads-txt-manager' ); ?>
 				</a>
 			</p>
