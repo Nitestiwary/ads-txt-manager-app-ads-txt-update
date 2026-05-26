@@ -560,3 +560,19 @@
 .atm-card-danger h3 {
     color: var(--atm-danger) !important;
 }
+
+/* Button Dashicons Vertical Alignment */
+.atm-submit-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+}
+
+.atm-submit-btn .dashicons {
+    font-size: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    line-height: 20px !important;
+    margin-top: 0 !important;
+}
