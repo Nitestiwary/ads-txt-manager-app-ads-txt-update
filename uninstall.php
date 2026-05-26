@@ -22,3 +22,4 @@ delete_option( 'ads_txt_manager_app-ads_backups' );
 // Clean physical files if present
 wp_delete_file( ABSPATH . 'ads.txt' );
 wp_delete_file( ABSPATH . 'app-ads.txt' );
+

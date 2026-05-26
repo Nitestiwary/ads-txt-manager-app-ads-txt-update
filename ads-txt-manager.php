@@ -9,6 +9,7 @@
  * Author:      Monetiscope
  * Author URI:  https://monetiscope.com
  * License:     GPLv2 or later
+ * Text Domain: ads-txt-manager-app-ads-txt-update
  * Requires at least: 6.0
  * Requires PHP:      7.4
  */
@@ -128,3 +129,4 @@ function ads_txt_manager_run() {
 	}
 }
 add_action( 'plugins_loaded', 'ads_txt_manager_run' );
+
