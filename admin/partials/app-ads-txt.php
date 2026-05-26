@@ -56,7 +56,7 @@ $auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validat
 
 		<div class="atm-form-actions">
 			<button type="submit" class="button button-primary button-hero atm-submit-btn">
-				<span class="dashicons dashicons-saved"></span> <?php esc_html_e( 'Save App-ads.txt Changes', 'ads-txt-manager' ); ?>
+				<?php esc_html_e( 'Save App-ads.txt Changes', 'ads-txt-manager' ); ?>
 			</button>
 		</div>
 	</form>
