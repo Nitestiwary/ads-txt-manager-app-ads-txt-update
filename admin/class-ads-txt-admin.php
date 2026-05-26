@@ -169,6 +169,7 @@ class Ads_Txt_Admin {
 				exit;
 
 			case 'import_settings':
+				// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 				$import_file = isset( $_FILES['import_file'] ) ? wp_unslash( $_FILES['import_file'] ) : array();
 				if ( ! empty( $import_file['tmp_name'] ) ) {
 					$tmp_path = sanitize_text_field( $import_file['tmp_name'] );
