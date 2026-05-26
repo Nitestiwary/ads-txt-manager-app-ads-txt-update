@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Admin Panel Manager class.
  *
@@ -255,8 +255,8 @@ class Ads_Txt_Admin {
 
 		// Branding Assets support compliant with WordPress guidelines with real-time timestamp cache buster
 		$logo_url = ADS_TXT_MANAGER_URL . 'assets/images/ads-txt-logo.png?v=' . current_time( 'timestamp' );
-		$banner_web = ADS_TXT_MANAGER_URL . 'assets/images/monetiscope-web-banner.png?v=' . current_time( 'timestamp' );
-		$banner_app = ADS_TXT_MANAGER_URL . 'assets/images/monetiscope-app-banner.png?v=' . current_time( 'timestamp' );
+		$banner_web = ADS_TXT_MANAGER_URL . 'assets/images/monetiscope-web-banner.jpg?v=' . current_time( 'timestamp' );
+		$banner_app = ADS_TXT_MANAGER_URL . 'assets/images/monetiscope-app-banner.jpg?v=' . current_time( 'timestamp' );
 
 		require_once ADS_TXT_MANAGER_DIR . 'admin/partials/dashboard.php';
 	}
