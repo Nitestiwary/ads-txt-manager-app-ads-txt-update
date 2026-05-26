@@ -174,9 +174,12 @@ class Ads_Txt_Admin {
 				if ( ! empty( $import_file['tmp_name'] ) ) {
 					$tmp_path = sanitize_text_field( $import_file['tmp_name'] );
 					global $wp_filesystem;
-					if ( empty( $wp_filesystem ) ) {
+					if ( empty( $wp_filesystem ) || ! is_object( $wp_filesystem ) ) {
 						require_once ABSPATH . 'wp-admin/includes/file.php';
-						WP_Filesystem();
+						if ( ! WP_Filesystem() || ! is_object( $wp_filesystem ) ) {
+							wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&error=' . urlencode( __( 'WordPress failed to initialize filesystem.', 'ads.txt-main' ) ) ) );
+							exit;
+						}
 					}
 					$import_data = $wp_filesystem->get_contents( $tmp_path );
 					$decoded = json_decode( $import_data, true );

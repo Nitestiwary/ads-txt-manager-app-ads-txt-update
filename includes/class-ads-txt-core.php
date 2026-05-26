@@ -82,9 +82,11 @@ class Ads_Txt_Core {
 	private function write_file_to_root( $filename, $content ) {
 		global $wp_filesystem;
 
-		if ( empty( $wp_filesystem ) ) {
+		if ( empty( $wp_filesystem ) || ! is_object( $wp_filesystem ) ) {
 			require_once ABSPATH . 'wp-admin/includes/file.php';
-			WP_Filesystem();
+			if ( ! WP_Filesystem() || ! is_object( $wp_filesystem ) ) {
+				return new WP_Error( 'filesystem_failed', __( 'WordPress failed to initialize filesystem. Using fallback routing instead.', 'ads.txt-main' ) );
+			}
 		}
 
 		$file_path = ABSPATH . $filename;
@@ -111,9 +113,11 @@ class Ads_Txt_Core {
 	public function check_write_permission( $filename ) {
 		global $wp_filesystem;
 
-		if ( empty( $wp_filesystem ) ) {
+		if ( empty( $wp_filesystem ) || ! is_object( $wp_filesystem ) ) {
 			require_once ABSPATH . 'wp-admin/includes/file.php';
-			WP_Filesystem();
+			if ( ! WP_Filesystem() || ! is_object( $wp_filesystem ) ) {
+				return false;
+			}
 		}
 
 		$file_path = ABSPATH . $filename;
