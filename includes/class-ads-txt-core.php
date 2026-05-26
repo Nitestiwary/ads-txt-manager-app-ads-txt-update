@@ -91,15 +91,15 @@ class Ads_Txt_Core {
 
 		// Check if file is writeable or parent directory is writeable
 		if ( file_exists( $file_path ) && ! is_writable( $file_path ) ) {
-			return new WP_Error( 'file_not_writable', __( 'File root path is not writable. Using fallback routing instead.', 'ads-txt-manager' ) );
+			return new WP_Error( 'file_not_writable', __( 'File root path is not writable. Using fallback routing instead.', 'ads.txt-main' ) );
 		}
 
 		if ( ! file_exists( $file_path ) && ! is_writable( ABSPATH ) ) {
-			return new WP_Error( 'dir_not_writable', __( 'WordPress root directory is not writable. Using fallback routing instead.', 'ads-txt-manager' ) );
+			return new WP_Error( 'dir_not_writable', __( 'WordPress root directory is not writable. Using fallback routing instead.', 'ads.txt-main' ) );
 		}
 
 		if ( ! $wp_filesystem->put_contents( $file_path, $content, FS_CHMOD_FILE ) ) {
-			return new WP_Error( 'write_failed', __( 'WordPress failed to write the file directly. Using fallback routing instead.', 'ads-txt-manager' ) );
+			return new WP_Error( 'write_failed', __( 'WordPress failed to write the file directly. Using fallback routing instead.', 'ads.txt-main' ) );
 		}
 
 		return true;
@@ -163,7 +163,7 @@ class Ads_Txt_Core {
 				}
 			}
 		}
-		return new WP_Error( 'backup_not_found', __( 'Specified backup not found.', 'ads-txt-manager' ) );
+		return new WP_Error( 'backup_not_found', __( 'Specified backup not found.', 'ads.txt-main' ) );
 	}
 
 	/**
