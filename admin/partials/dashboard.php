@@ -179,7 +179,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Writable', 'ads.txt-main' ); ?>
 										<?php else : ?>
 											<span class="dashicons dashicons-lock text-danger"></span> <?php esc_html_e( 'Root Unwritable (Fallback enabled)', 'ads.txt-main' ); ?>
-										</td>
+										<?php endif; ?>
+									</td>
 								</tr>
 								<tr>
 									<th><?php esc_html_e( 'Last Updated:', 'ads.txt-main' ); ?></th>
