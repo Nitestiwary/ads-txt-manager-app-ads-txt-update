@@ -9,7 +9,7 @@
  * Author:      Monetiscope
  * Author URI:  https://monetiscope.com
  * License:     GPLv2 or later
- * Text Domain: ads.txt-main
+ * Text Domain: ads-txt-main
  * Requires at least: 6.0
  * Requires PHP:      7.4
  */
