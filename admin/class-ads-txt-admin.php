@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Admin Panel Manager class.
  *
@@ -38,8 +38,8 @@ class Ads_Txt_Admin {
 	 */
 	public function register_menu() {
 		add_menu_page(
-			__( 'Ads.txt Manager - App-ads.txt Update', 'ads-txt-manager-app-ads-txt-update' ),
-			__( 'Ads.txt Manager', 'ads-txt-manager-app-ads-txt-update' ),
+			__( 'Ads.txt Manager - App-ads.txt Update', 'ads.txt-main' ),
+			__( 'Ads.txt Manager', 'ads.txt-main' ),
 			'manage_options',
 			'ads-txt-manager',
 			array( $this, 'render_dashboard' ),
@@ -52,7 +52,7 @@ class Ads_Txt_Admin {
 	 * Enqueue stylesheet and JavaScript.
 	 */
 	public function enqueue_assets( $hook ) {
-		if ( 'toplevel_page_ads-txt-manager' !== $hook && 'toplevel_page_ads-txt-manager-app-ads-txt-update' !== $hook ) {
+		if ( 'toplevel_page_ads-txt-manager' !== $hook && 'toplevel_page_ads.txt-main' !== $hook ) {
 			return;
 		}
 
@@ -79,12 +79,12 @@ class Ads_Txt_Admin {
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => wp_create_nonce( 'ads_txt_manager_nonce' ),
 				'i18n'     => array(
-					'saving'        => __( 'Saving...', 'ads-txt-manager-app-ads-txt-update' ),
-					'saved'         => __( 'Saved Successfully!', 'ads-txt-manager-app-ads-txt-update' ),
-					'save_failed'   => __( 'Failed to save settings.', 'ads-txt-manager-app-ads-txt-update' ),
-					'valid'         => __( 'Syntax is perfectly valid!', 'ads-txt-manager-app-ads-txt-update' ),
-					'duplicate'     => __( 'Duplicate entry found.', 'ads-txt-manager-app-ads-txt-update' ),
-					'invalid_domain'=> __( 'Invalid domain detected.', 'ads-txt-manager-app-ads-txt-update' ),
+					'saving'        => __( 'Saving...', 'ads.txt-main' ),
+					'saved'         => __( 'Saved Successfully!', 'ads.txt-main' ),
+					'save_failed'   => __( 'Failed to save settings.', 'ads.txt-main' ),
+					'valid'         => __( 'Syntax is perfectly valid!', 'ads.txt-main' ),
+					'duplicate'     => __( 'Duplicate entry found.', 'ads.txt-main' ),
+					'invalid_domain'=> __( 'Invalid domain detected.', 'ads.txt-main' ),
 				)
 			)
 		);
@@ -126,12 +126,12 @@ class Ads_Txt_Admin {
 		}
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'Unauthorized access.', 'ads-txt-manager-app-ads-txt-update' ) );
+			wp_die( esc_html__( 'Unauthorized access.', 'ads.txt-main' ) );
 		}
 
 		// Verify nonce securely
 		if ( ! isset( $_POST['ads_txt_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['ads_txt_nonce'] ) ), 'ads_txt_manager_action' ) ) {
-			wp_die( esc_html__( 'Security check failed.', 'ads-txt-manager-app-ads-txt-update' ) );
+			wp_die( esc_html__( 'Security check failed.', 'ads.txt-main' ) );
 		}
 
 		$action = sanitize_key( wp_unslash( $_POST['ads_txt_action'] ) );
@@ -177,7 +177,7 @@ class Ads_Txt_Admin {
 					if ( empty( $wp_filesystem ) || ! is_object( $wp_filesystem ) ) {
 						require_once ABSPATH . 'wp-admin/includes/file.php';
 						if ( ! WP_Filesystem() || ! is_object( $wp_filesystem ) ) {
-							wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&error=' . urlencode( __( 'WordPress failed to initialize filesystem.', 'ads-txt-manager-app-ads-txt-update' ) ) ) );
+							wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&error=' . urlencode( __( 'WordPress failed to initialize filesystem.', 'ads.txt-main' ) ) ) );
 							exit;
 						}
 					}
@@ -195,7 +195,7 @@ class Ads_Txt_Admin {
 						}
 						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&success=import' ) );
 					} else {
-						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&error=' . urlencode( __( 'Invalid file format.', 'ads-txt-manager-app-ads-txt-update' ) ) ) );
+						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&error=' . urlencode( __( 'Invalid file format.', 'ads.txt-main' ) ) ) );
 					}
 				}
 				exit;
