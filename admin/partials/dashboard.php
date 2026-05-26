@@ -16,13 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="atm-header-left">
 			<img src="<?php echo esc_url( $logo_url ); ?>" alt="Ads.txt Manager" class="atm-plugin-logo" />
 			<div class="atm-header-title-wrapper">
-				<h1 class="atm-main-title"><?php esc_html_e( 'Ads.txt Manager', 'ads.txt-main' ); ?></h1>
-				<p class="atm-subtitle"><?php esc_html_e( 'Manage and update ads.txt & app-ads.txt files with real-time validation by Monetiscope', 'ads.txt-main' ); ?></p>
+				<h1 class="atm-main-title"><?php esc_html_e( 'Ads.txt Manager', 'ads-txt-main' ); ?></h1>
+				<p class="atm-subtitle"><?php esc_html_e( 'Manage and update ads.txt & app-ads.txt files with real-time validation by Monetiscope', 'ads-txt-main' ); ?></p>
 			</div>
 		</div>
 		<div class="atm-header-right">
 			<span class="atm-developer-badge">
-				<?php esc_html_e( 'Developed by: ', 'ads.txt-main' ); ?>
+				<?php esc_html_e( 'Developed by: ', 'ads-txt-main' ); ?>
 				<a href="https://monetiscope.com" target="_blank" rel="noopener noreferrer">Monetiscope</a>
 			</span>
 		</div>
@@ -35,15 +35,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php
 				$success_type = sanitize_text_field( $_GET['success'] );
 				if ( 'restore' === $success_type ) {
-					esc_html_e( 'Backup restored successfully.', 'ads.txt-main' );
+					esc_html_e( 'Backup restored successfully.', 'ads-txt-main' );
 				} elseif ( 'import' === $success_type ) {
-					esc_html_e( 'Settings and files imported successfully.', 'ads.txt-main' );
+					esc_html_e( 'Settings and files imported successfully.', 'ads-txt-main' );
 				} elseif ( 'settings' === $success_type ) {
-					esc_html_e( 'Settings updated successfully.', 'ads.txt-main' );
+					esc_html_e( 'Settings updated successfully.', 'ads-txt-main' );
 				} elseif ( 'reset' === $success_type ) {
-					esc_html_e( 'Plugin reset successfully. All files and options cleared.', 'ads.txt-main' );
+					esc_html_e( 'Plugin reset successfully. All files and options cleared.', 'ads-txt-main' );
 				} else {
-					esc_html_e( 'Changes saved successfully.', 'ads.txt-main' );
+					esc_html_e( 'Changes saved successfully.', 'ads-txt-main' );
 				}
 				?>
 			</p>
@@ -59,25 +59,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<!-- Navigation Tabs -->
 	<nav class="nav-tab-wrapper atm-nav-tab-wrapper">
 		<a href="?page=ads-txt-manager&tab=dashboard" class="nav-tab <?php echo 'dashboard' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-dashboard"></span> <?php esc_html_e( 'Dashboard', 'ads.txt-main' ); ?>
+			<span class="dashicons dashicons-dashboard"></span> <?php esc_html_e( 'Dashboard', 'ads-txt-main' ); ?>
 		</a>
 		<a href="?page=ads-txt-manager&tab=ads-txt" class="nav-tab <?php echo 'ads-txt' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-admin-site"></span> <?php esc_html_e( 'Ads.txt', 'ads.txt-main' ); ?>
+			<span class="dashicons dashicons-admin-site"></span> <?php esc_html_e( 'Ads.txt', 'ads-txt-main' ); ?>
 		</a>
 		<a href="?page=ads-txt-manager&tab=app-ads-txt" class="nav-tab <?php echo 'app-ads-txt' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-phone"></span> <?php esc_html_e( 'App-ads.txt', 'ads.txt-main' ); ?>
+			<span class="dashicons dashicons-phone"></span> <?php esc_html_e( 'App-ads.txt', 'ads-txt-main' ); ?>
 		</a>
 		<a href="?page=ads-txt-manager&tab=validation" class="nav-tab <?php echo 'validation' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Validation', 'ads.txt-main' ); ?>
+			<span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Validation', 'ads-txt-main' ); ?>
 		</a>
 		<a href="?page=ads-txt-manager&tab=backup" class="nav-tab <?php echo 'backup' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-backup"></span> <?php esc_html_e( 'Backups', 'ads.txt-main' ); ?>
+			<span class="dashicons dashicons-backup"></span> <?php esc_html_e( 'Backups', 'ads-txt-main' ); ?>
 		</a>
 		<a href="?page=ads-txt-manager&tab=settings" class="nav-tab <?php echo 'settings' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-admin-generic"></span> <?php esc_html_e( 'Settings', 'ads.txt-main' ); ?>
+			<span class="dashicons dashicons-admin-generic"></span> <?php esc_html_e( 'Settings', 'ads-txt-main' ); ?>
 		</a>
 		<a href="?page=ads-txt-manager&tab=help" class="nav-tab <?php echo 'help' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-editor-help"></span> <?php esc_html_e( 'Help', 'ads.txt-main' ); ?>
+			<span class="dashicons dashicons-editor-help"></span> <?php esc_html_e( 'Help', 'ads-txt-main' ); ?>
 		</a>
 	</nav>
 
@@ -91,52 +91,52 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<!-- Ads.txt Status -->
 					<div class="atm-card">
 						<div class="atm-card-header">
-							<h2><?php esc_html_e( 'Web Ads.txt Overview', 'ads.txt-main' ); ?></h2>
+							<h2><?php esc_html_e( 'Web Ads.txt Overview', 'ads-txt-main' ); ?></h2>
 							<span class="atm-status-badge <?php echo $stats['ads']['exists'] ? 'status-active' : 'status-inactive'; ?>">
-								<?php echo $stats['ads']['exists'] ? esc_html__( 'File Active', 'ads.txt-main' ) : esc_html__( 'Not Created', 'ads.txt-main' ); ?>
+								<?php echo $stats['ads']['exists'] ? esc_html__( 'File Active', 'ads-txt-main' ) : esc_html__( 'Not Created', 'ads-txt-main' ); ?>
 							</span>
 						</div>
 						<div class="atm-card-body">
 							<table class="atm-stats-table">
 								<tr>
-									<th><?php esc_html_e( 'Entries Count:', 'ads.txt-main' ); ?></th>
+									<th><?php esc_html_e( 'Entries Count:', 'ads-txt-main' ); ?></th>
 									<td><strong><?php echo esc_html( $stats['ads']['entries'] ); ?></strong></td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Physical File:', 'ads.txt-main' ); ?></th>
+									<th><?php esc_html_e( 'Physical File:', 'ads-txt-main' ); ?></th>
 									<td>
 										<?php if ( $stats['ads']['exists'] ) : ?>
-											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Created in Root', 'ads.txt-main' ); ?>
+											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Created in Root', 'ads-txt-main' ); ?>
 										<?php else : ?>
-											<span class="dashicons dashicons-warning text-warning"></span> <?php esc_html_e( 'Using Dynamic Fallback Route', 'ads.txt-main' ); ?>
+											<span class="dashicons dashicons-warning text-warning"></span> <?php esc_html_e( 'Using Dynamic Fallback Route', 'ads-txt-main' ); ?>
 										<?php endif; ?>
 									</td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Write Permissions:', 'ads.txt-main' ); ?></th>
+									<th><?php esc_html_e( 'Write Permissions:', 'ads-txt-main' ); ?></th>
 									<td>
 										<?php if ( $stats['ads']['writable'] ) : ?>
-											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Writable', 'ads.txt-main' ); ?>
+											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Writable', 'ads-txt-main' ); ?>
 										<?php else : ?>
-											<span class="dashicons dashicons-lock text-danger"></span> <?php esc_html_e( 'Root Unwritable (Fallback enabled)', 'ads.txt-main' ); ?>
+											<span class="dashicons dashicons-lock text-danger"></span> <?php esc_html_e( 'Root Unwritable (Fallback enabled)', 'ads-txt-main' ); ?>
 										<?php endif; ?>
 									</td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Last Updated:', 'ads.txt-main' ); ?></th>
+									<th><?php esc_html_e( 'Last Updated:', 'ads-txt-main' ); ?></th>
 									<td><?php echo esc_html( $stats['ads']['updated'] ); ?></td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Public URL:', 'ads.txt-main' ); ?></th>
+									<th><?php esc_html_e( 'Public URL:', 'ads-txt-main' ); ?></th>
 									<td>
 										<a href="<?php echo esc_url( $stats['ads']['url'] ); ?>" target="_blank" class="atm-button button-secondary">
-											<span class="dashicons dashicons-external"></span> <?php esc_html_e( 'View Public File', 'ads.txt-main' ); ?>
+											<span class="dashicons dashicons-external"></span> <?php esc_html_e( 'View Public File', 'ads-txt-main' ); ?>
 										</a>
 									</td>
 								</tr>
 							</table>
 							<div class="atm-card-actions">
-								<a href="?page=ads-txt-manager&tab=ads-txt" class="atm-button button-primary"><?php esc_html_e( 'Manage Ads.txt', 'ads.txt-main' ); ?></a>
+								<a href="?page=ads-txt-manager&tab=ads-txt" class="atm-button button-primary"><?php esc_html_e( 'Manage Ads.txt', 'ads-txt-main' ); ?></a>
 							</div>
 						</div>
 					</div>
@@ -144,52 +144,52 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<!-- App-ads.txt Status -->
 					<div class="atm-card">
 						<div class="atm-card-header">
-							<h2><?php esc_html_e( 'App app-ads.txt Overview', 'ads.txt-main' ); ?></h2>
+							<h2><?php esc_html_e( 'App app-ads.txt Overview', 'ads-txt-main' ); ?></h2>
 							<span class="atm-status-badge <?php echo $stats['app_ads']['exists'] ? 'status-active' : 'status-inactive'; ?>">
-								<?php echo $stats['app_ads']['exists'] ? esc_html__( 'File Active', 'ads.txt-main' ) : esc_html__( 'Not Created', 'ads.txt-main' ); ?>
+								<?php echo $stats['app_ads']['exists'] ? esc_html__( 'File Active', 'ads-txt-main' ) : esc_html__( 'Not Created', 'ads-txt-main' ); ?>
 							</span>
 						</div>
 						<div class="atm-card-body">
 							<table class="atm-stats-table">
 								<tr>
-									<th><?php esc_html_e( 'Entries Count:', 'ads.txt-main' ); ?></th>
+									<th><?php esc_html_e( 'Entries Count:', 'ads-txt-main' ); ?></th>
 									<td><strong><?php echo esc_html( $stats['app_ads']['entries'] ); ?></strong></td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Physical File:', 'ads.txt-main' ); ?></th>
+									<th><?php esc_html_e( 'Physical File:', 'ads-txt-main' ); ?></th>
 									<td>
 										<?php if ( $stats['app_ads']['exists'] ) : ?>
-											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Created in Root', 'ads.txt-main' ); ?>
+											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Created in Root', 'ads-txt-main' ); ?>
 										<?php else : ?>
-											<span class="dashicons dashicons-warning text-warning"></span> <?php esc_html_e( 'Using Dynamic Fallback Route', 'ads.txt-main' ); ?>
+											<span class="dashicons dashicons-warning text-warning"></span> <?php esc_html_e( 'Using Dynamic Fallback Route', 'ads-txt-main' ); ?>
 										<?php endif; ?>
 									</td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Write Permissions:', 'ads.txt-main' ); ?></th>
+									<th><?php esc_html_e( 'Write Permissions:', 'ads-txt-main' ); ?></th>
 									<td>
 										<?php if ( $stats['app_ads']['writable'] ) : ?>
-											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Writable', 'ads.txt-main' ); ?>
+											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Writable', 'ads-txt-main' ); ?>
 										<?php else : ?>
-											<span class="dashicons dashicons-lock text-danger"></span> <?php esc_html_e( 'Root Unwritable (Fallback enabled)', 'ads.txt-main' ); ?>
+											<span class="dashicons dashicons-lock text-danger"></span> <?php esc_html_e( 'Root Unwritable (Fallback enabled)', 'ads-txt-main' ); ?>
 										<?php endif; ?>
 									</td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Last Updated:', 'ads.txt-main' ); ?></th>
+									<th><?php esc_html_e( 'Last Updated:', 'ads-txt-main' ); ?></th>
 									<td><?php echo esc_html( $stats['app_ads']['updated'] ); ?></td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Public URL:', 'ads.txt-main' ); ?></th>
+									<th><?php esc_html_e( 'Public URL:', 'ads-txt-main' ); ?></th>
 									<td>
 										<a href="<?php echo esc_url( $stats['app_ads']['url'] ); ?>" target="_blank" class="atm-button button-secondary">
-											<span class="dashicons dashicons-external"></span> <?php esc_html_e( 'View Public File', 'ads.txt-main' ); ?>
+											<span class="dashicons dashicons-external"></span> <?php esc_html_e( 'View Public File', 'ads-txt-main' ); ?>
 										</a>
 									</td>
 								</tr>
 							</table>
 							<div class="atm-card-actions">
-								<a href="?page=ads-txt-manager&tab=app-ads-txt" class="atm-button button-primary"><?php esc_html_e( 'Manage App-ads.txt', 'ads.txt-main' ); ?></a>
+								<a href="?page=ads-txt-manager&tab=app-ads-txt" class="atm-button button-primary"><?php esc_html_e( 'Manage App-ads.txt', 'ads-txt-main' ); ?></a>
 							</div>
 						</div>
 					</div>

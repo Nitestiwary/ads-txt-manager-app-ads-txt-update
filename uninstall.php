@@ -20,5 +20,5 @@ delete_option( 'ads_txt_manager_ads_backups' );
 delete_option( 'ads_txt_manager_app-ads_backups' );
 
 // Clean physical files if present
-@unlink( ABSPATH . 'ads.txt' );
-@unlink( ABSPATH . 'app-ads.txt' );
+wp_delete_file( ABSPATH . 'ads.txt' );
+wp_delete_file( ABSPATH . 'app-ads.txt' );

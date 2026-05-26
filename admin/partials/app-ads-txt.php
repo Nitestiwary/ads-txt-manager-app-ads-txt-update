@@ -15,9 +15,9 @@ $auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validat
 ?>
 
 <div class="atm-section-header">
-	<h2><span class="dashicons dashicons-phone"></span> <?php esc_html_e( 'Manage app-ads.txt', 'ads.txt-main' ); ?></h2>
+	<h2><span class="dashicons dashicons-phone"></span> <?php esc_html_e( 'Manage app-ads.txt', 'ads-txt-main' ); ?></h2>
 	<p class="atm-section-desc">
-		<?php esc_html_e( 'Customize your mobile application app-ads.txt file. Make sure entries align with Google AdMob, AppLovin, Unity Ads, etc.', 'ads.txt-main' ); ?>
+		<?php esc_html_e( 'Customize your mobile application app-ads.txt file. Make sure entries align with Google AdMob, AppLovin, Unity Ads, etc.', 'ads-txt-main' ); ?>
 	</p>
 </div>
 
@@ -29,9 +29,9 @@ $auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validat
 
 		<div class="atm-textarea-wrapper">
 			<label for="app_ads_txt_content" class="atm-input-label">
-				<?php esc_html_e( 'Edit app-ads.txt lines:', 'ads.txt-main' ); ?>
+				<?php esc_html_e( 'Edit app-ads.txt lines:', 'ads-txt-main' ); ?>
 				<span class="atm-preview-link-hint">
-					(<?php esc_html_e( 'Live Preview URL:', 'ads.txt-main' ); ?> <a href="<?php echo esc_url( $stats['app_ads']['url'] ); ?>" target="_blank"><?php echo esc_url( $stats['app_ads']['url'] ); ?></a>)
+					(<?php esc_html_e( 'Live Preview URL:', 'ads-txt-main' ); ?> <a href="<?php echo esc_url( $stats['app_ads']['url'] ); ?>" target="_blank"><?php echo esc_url( $stats['app_ads']['url'] ); ?></a>)
 				</span>
 			</label>
 			<textarea 
@@ -47,7 +47,7 @@ $auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validat
 		<div id="atm-live-validation-result" class="atm-live-validation-box hidden">
 			<div class="atm-validation-header">
 				<span class="dashicons dashicons-warning"></span>
-				<h3><?php esc_html_e( 'Live Validation Analysis', 'ads.txt-main' ); ?></h3>
+				<h3><?php esc_html_e( 'Live Validation Analysis', 'ads-txt-main' ); ?></h3>
 			</div>
 			<div class="atm-validation-body">
 				<!-- Injected by JS -->
@@ -56,7 +56,7 @@ $auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validat
 
 		<div class="atm-form-actions">
 			<button type="submit" class="button button-primary button-hero atm-submit-btn">
-				<?php esc_html_e( 'Save App-ads.txt Changes', 'ads.txt-main' ); ?>
+				<?php esc_html_e( 'Save App-ads.txt Changes', 'ads-txt-main' ); ?>
 			</button>
 		</div>
 	</form>

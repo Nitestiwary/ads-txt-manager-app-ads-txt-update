@@ -38,10 +38,10 @@ class Ads_Txt_Admin {
 	 */
 	public function register_menu() {
 		add_menu_page(
-			__( 'Ads.txt Manager - App-ads.txt Update', 'ads.txt-main' ),
-			__( 'Ads.txt Manager', 'ads.txt-main' ),
+			__( 'Ads.txt Manager - App-ads.txt Update', 'ads-txt-main' ),
+			__( 'Ads.txt Manager', 'ads-txt-main' ),
 			'manage_options',
-			'ads.txt-main',
+			'ads-txt-main',
 			array( $this, 'render_dashboard' ),
 			'dashicons-media-text',
 			85
@@ -79,12 +79,12 @@ class Ads_Txt_Admin {
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => wp_create_nonce( 'ads_txt_manager_nonce' ),
 				'i18n'     => array(
-					'saving'        => __( 'Saving...', 'ads.txt-main' ),
-					'saved'         => __( 'Saved Successfully!', 'ads.txt-main' ),
-					'save_failed'   => __( 'Failed to save settings.', 'ads.txt-main' ),
-					'valid'         => __( 'Syntax is perfectly valid!', 'ads.txt-main' ),
-					'duplicate'     => __( 'Duplicate entry found.', 'ads.txt-main' ),
-					'invalid_domain'=> __( 'Invalid domain detected.', 'ads.txt-main' ),
+					'saving'        => __( 'Saving...', 'ads-txt-main' ),
+					'saved'         => __( 'Saved Successfully!', 'ads-txt-main' ),
+					'save_failed'   => __( 'Failed to save settings.', 'ads-txt-main' ),
+					'valid'         => __( 'Syntax is perfectly valid!', 'ads-txt-main' ),
+					'duplicate'     => __( 'Duplicate entry found.', 'ads-txt-main' ),
+					'invalid_domain'=> __( 'Invalid domain detected.', 'ads-txt-main' ),
 				)
 			)
 		);
@@ -106,45 +106,45 @@ class Ads_Txt_Admin {
 		}
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'Unauthorized access.', 'ads.txt-main' ) );
+			wp_die( esc_html__( 'Unauthorized access.', 'ads-txt-main' ) );
 		}
 
-		// Verify nonce
-		if ( ! isset( $_POST['ads_txt_nonce'] ) || ! wp_verify_nonce( $_POST['ads_txt_nonce'], 'ads_txt_manager_action' ) ) {
-			wp_die( esc_html__( 'Security check failed.', 'ads.txt-main' ) );
+		// Verify nonce securely
+		if ( ! isset( $_POST['ads_txt_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['ads_txt_nonce'] ) ), 'ads_txt_manager_action' ) ) {
+			wp_die( esc_html__( 'Security check failed.', 'ads-txt-main' ) );
 		}
 
-		$action = sanitize_text_field( $_POST['ads_txt_action'] );
+		$action = sanitize_key( wp_unslash( $_POST['ads_txt_action'] ) );
 
 		switch ( $action ) {
 			case 'save_ads':
-				$content = isset( $_POST['ads_txt_content'] ) ? $_POST['ads_txt_content'] : '';
+				$content = isset( $_POST['ads_txt_content'] ) ? sanitize_textarea_field( wp_unslash( $_POST['ads_txt_content'] ) ) : '';
 				$res = $this->core->save_ads_txt( $content );
 				if ( is_wp_error( $res ) ) {
-					wp_redirect( admin_url( 'admin-page=ads-txt-manager&tab=ads-txt&error=' . urlencode( $res->get_error_message() ) ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=ads-txt&error=' . urlencode( $res->get_error_message() ) ) );
 				} else {
-					wp_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=ads-txt&success=1' ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=ads-txt&success=1' ) );
 				}
 				exit;
 
 			case 'save_app_ads':
-				$content = isset( $_POST['app_ads_txt_content'] ) ? $_POST['app_ads_txt_content'] : '';
+				$content = isset( $_POST['app_ads_txt_content'] ) ? sanitize_textarea_field( wp_unslash( $_POST['app_ads_txt_content'] ) ) : '';
 				$res = $this->core->save_app_ads_txt( $content );
 				if ( is_wp_error( $res ) ) {
-					wp_redirect( admin_url( 'admin-page=ads-txt-manager&tab=app-ads-txt&error=' . urlencode( $res->get_error_message() ) ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=app-ads-txt&error=' . urlencode( $res->get_error_message() ) ) );
 				} else {
-					wp_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=app-ads-txt&success=1' ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=app-ads-txt&success=1' ) );
 				}
 				exit;
 
 			case 'restore_backup':
-				$type = sanitize_text_field( $_POST['backup_type'] );
-				$timestamp = sanitize_text_field( $_POST['backup_timestamp'] );
+				$type = isset( $_POST['backup_type'] ) ? sanitize_key( wp_unslash( $_POST['backup_type'] ) ) : '';
+				$timestamp = isset( $_POST['backup_timestamp'] ) ? sanitize_text_field( wp_unslash( $_POST['backup_timestamp'] ) ) : '';
 				$res = $this->core->restore_backup( $type, $timestamp );
 				if ( is_wp_error( $res ) ) {
-					wp_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=backup&error=' . urlencode( $res->get_error_message() ) ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=backup&error=' . urlencode( $res->get_error_message() ) ) );
 				} else {
-					wp_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=backup&success=restore' ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=backup&success=restore' ) );
 				}
 				exit;
 
@@ -162,9 +162,9 @@ class Ads_Txt_Admin {
 						if ( isset( $decoded['settings'] ) ) {
 							update_option( 'ads_txt_manager_settings', $decoded['settings'] );
 						}
-						wp_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&success=import' ) );
+						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&success=import' ) );
 					} else {
-						wp_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&error=' . urlencode( __( 'Invalid file format.', 'ads.txt-main' ) ) ) );
+						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&error=' . urlencode( __( 'Invalid file format.', 'ads-txt-main' ) ) ) );
 					}
 				}
 				exit;
@@ -188,7 +188,7 @@ class Ads_Txt_Admin {
 					'duplicate_warning' => isset( $_POST['duplicate_warning'] ) ? '1' : '0',
 				);
 				update_option( 'ads_txt_manager_settings', $settings );
-				wp_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&success=settings' ) );
+				wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&success=settings' ) );
 				exit;
 
 			case 'reset_settings':
@@ -197,9 +197,9 @@ class Ads_Txt_Admin {
 				delete_option( 'ads_txt_manager_app_ads_txt' );
 				delete_option( 'ads_txt_manager_ads_backups' );
 				delete_option( 'ads_txt_manager_app-ads_backups' );
-				// Clean root files
-				@unlink( ABSPATH . 'ads.txt' );
-				@unlink( ABSPATH . 'app-ads.txt' );
+				// Clean root files securely using WordPress APIs
+				wp_delete_file( ABSPATH . 'ads.txt' );
+				wp_delete_file( ABSPATH . 'app-ads.txt' );
 
 				$default_settings = array(
 					'enable_validation' => '1',
@@ -209,7 +209,7 @@ class Ads_Txt_Admin {
 				);
 				update_option( 'ads_txt_manager_settings', $default_settings );
 
-				wp_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&success=reset' ) );
+				wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&success=reset' ) );
 				exit;
 		}
 	}

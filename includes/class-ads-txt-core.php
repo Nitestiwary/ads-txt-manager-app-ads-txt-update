@@ -89,17 +89,17 @@ class Ads_Txt_Core {
 
 		$file_path = ABSPATH . $filename;
 
-		// Check if file is writeable or parent directory is writeable
-		if ( file_exists( $file_path ) && ! is_writable( $file_path ) ) {
-			return new WP_Error( 'file_not_writable', __( 'File root path is not writable. Using fallback routing instead.', 'ads.txt-main' ) );
+		// Check if file is writeable or parent directory is writeable using WP_Filesystem methods
+		if ( $wp_filesystem->exists( $file_path ) && ! $wp_filesystem->is_writable( $file_path ) ) {
+			return new WP_Error( 'file_not_writable', __( 'File root path is not writable. Using fallback routing instead.', 'ads-txt-main' ) );
 		}
 
-		if ( ! file_exists( $file_path ) && ! is_writable( ABSPATH ) ) {
-			return new WP_Error( 'dir_not_writable', __( 'WordPress root directory is not writable. Using fallback routing instead.', 'ads.txt-main' ) );
+		if ( ! $wp_filesystem->exists( $file_path ) && ! $wp_filesystem->is_writable( ABSPATH ) ) {
+			return new WP_Error( 'dir_not_writable', __( 'WordPress root directory is not writable. Using fallback routing instead.', 'ads-txt-main' ) );
 		}
 
 		if ( ! $wp_filesystem->put_contents( $file_path, $content, FS_CHMOD_FILE ) ) {
-			return new WP_Error( 'write_failed', __( 'WordPress failed to write the file directly. Using fallback routing instead.', 'ads.txt-main' ) );
+			return new WP_Error( 'write_failed', __( 'WordPress failed to write the file directly. Using fallback routing instead.', 'ads-txt-main' ) );
 		}
 
 		return true;
@@ -109,11 +109,18 @@ class Ads_Txt_Core {
 	 * Check if file has write issues.
 	 */
 	public function check_write_permission( $filename ) {
-		$file_path = ABSPATH . $filename;
-		if ( file_exists( $file_path ) ) {
-			return is_writable( $file_path );
+		global $wp_filesystem;
+
+		if ( empty( $wp_filesystem ) ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			WP_Filesystem();
 		}
-		return is_writable( ABSPATH );
+
+		$file_path = ABSPATH . $filename;
+		if ( $wp_filesystem->exists( $file_path ) ) {
+			return $wp_filesystem->is_writable( $file_path );
+		}
+		return $wp_filesystem->is_writable( ABSPATH );
 	}
 
 	/**
@@ -163,7 +170,7 @@ class Ads_Txt_Core {
 				}
 			}
 		}
-		return new WP_Error( 'backup_not_found', __( 'Specified backup not found.', 'ads.txt-main' ) );
+		return new WP_Error( 'backup_not_found', __( 'Specified backup not found.', 'ads-txt-main' ) );
 	}
 
 	/**

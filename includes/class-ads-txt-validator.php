@@ -51,7 +51,8 @@ class Ads_Txt_Validator {
 				$results['warnings'][] = array(
 					'line' => $line_num,
 					'text' => $line,
-					'message' => sprintf( __( 'Duplicate entry found on line %d (matches line %d).', 'ads.txt-main' ), $line_num, $seen[ $normalized ] ),
+					/* translators: %1$d: current line number, %2$d: matching duplicate line number */
+					'message' => sprintf( __( 'Duplicate entry found on line %1$d (matches line %2$d).', 'ads-txt-main' ), $line_num, $seen[ $normalized ] ),
 				);
 				continue;
 			}
@@ -66,7 +67,8 @@ class Ads_Txt_Validator {
 				$results['errors'][] = array(
 					'line' => $line_num,
 					'text' => $line,
-					'message' => sprintf( __( 'Invalid formatting on line %d. Expected 3 or 4 comma-separated values (Domain, Publisher ID, Relationship, optional Cert Authority ID).', 'ads.txt-main' ), $line_num ),
+					/* translators: %d: line number */
+					'message' => sprintf( __( 'Invalid formatting on line %d. Expected 3 or 4 comma-separated values (Domain, Publisher ID, Relationship, optional Cert Authority ID).', 'ads-txt-main' ), $line_num ),
 				);
 				$results['valid'] = false;
 				continue;
@@ -82,7 +84,8 @@ class Ads_Txt_Validator {
 				$results['errors'][] = array(
 					'line' => $line_num,
 					'text' => $line,
-					'message' => sprintf( __( 'Invalid domain format "%s" on line %d.', 'ads.txt-main' ), esc_html( $domain ), $line_num ),
+					/* translators: %1$s: domain name, %2$d: line number */
+					'message' => sprintf( __( 'Invalid domain format "%1$s" on line %2$d.', 'ads-txt-main' ), esc_html( $domain ), $line_num ),
 				);
 				$results['valid'] = false;
 			}
@@ -92,7 +95,8 @@ class Ads_Txt_Validator {
 				$results['errors'][] = array(
 					'line' => $line_num,
 					'text' => $line,
-					'message' => sprintf( __( 'Missing publisher/seller ID on line %d.', 'ads.txt-main' ), $line_num ),
+					/* translators: %d: line number */
+					'message' => sprintf( __( 'Missing publisher/seller ID on line %d.', 'ads-txt-main' ), $line_num ),
 				);
 				$results['valid'] = false;
 			}
@@ -102,7 +106,8 @@ class Ads_Txt_Validator {
 				$results['errors'][] = array(
 					'line' => $line_num,
 					'text' => $line,
-					'message' => sprintf( __( 'Invalid relationship type "%s" on line %d. Must be DIRECT or RESELLER (case insensitive).', 'ads.txt-main' ), esc_html( $relation ), $line_num ),
+					/* translators: %1$s: relationship type, %2$d: line number */
+					'message' => sprintf( __( 'Invalid relationship type "%1$s" on line %2$d. Must be DIRECT or RESELLER (case insensitive).', 'ads-txt-main' ), esc_html( $relation ), $line_num ),
 				);
 				$results['valid'] = false;
 			}
