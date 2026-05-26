@@ -41,7 +41,7 @@ class Ads_Txt_Admin {
 			__( 'Ads.txt Manager - App-ads.txt Update', 'ads.txt-main' ),
 			__( 'Ads.txt Manager', 'ads.txt-main' ),
 			'manage_options',
-			'ads-txt-main',
+			'ads-txt-manager',
 			array( $this, 'render_dashboard' ),
 			'dashicons-media-text',
 			85
