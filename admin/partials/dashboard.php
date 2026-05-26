@@ -30,8 +30,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<!-- Alert Messages -->
 	<?php
-	$ads_txt_manager_success_type = filter_input( INPUT_GET, 'success', FILTER_SANITIZE_KEY );
-	if ( $ads_txt_manager_success_type ) :
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$ads_txt_manager_success_type = isset( $_GET['success'] ) ? sanitize_key( wp_unslash( $_GET['success'] ) ) : '';
+	if ( ! empty( $ads_txt_manager_success_type ) ) :
 	?>
 		<div class="notice notice-success is-dismissible atm-notice">
 			<p>
@@ -53,8 +54,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php endif; ?>
 
 	<?php
-	$ads_txt_manager_error_message = filter_input( INPUT_GET, 'error', FILTER_DEFAULT );
-	if ( $ads_txt_manager_error_message ) :
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$ads_txt_manager_error_message = isset( $_GET['error'] ) ? sanitize_text_field( wp_unslash( $_GET['error'] ) ) : '';
+	if ( ! empty( $ads_txt_manager_error_message ) ) :
 	?>
 		<div class="notice notice-error is-dismissible atm-notice">
 			<p><?php echo esc_html( urldecode( $ads_txt_manager_error_message ) ); ?></p>
@@ -177,8 +179,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Writable', 'ads.txt-main' ); ?>
 										<?php else : ?>
 											<span class="dashicons dashicons-lock text-danger"></span> <?php esc_html_e( 'Root Unwritable (Fallback enabled)', 'ads.txt-main' ); ?>
-										<?php endif; ?>
-									</td>
+										</td>
 								</tr>
 								<tr>
 									<th><?php esc_html_e( 'Last Updated:', 'ads.txt-main' ); ?></th>

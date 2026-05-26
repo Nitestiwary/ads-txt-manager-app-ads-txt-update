@@ -246,10 +246,8 @@ class Ads_Txt_Admin {
 	 * Main wrapper rendering the dashboard admin screen.
 	 */
 	public function render_dashboard() {
-		$active_tab = filter_input( INPUT_GET, 'tab', FILTER_SANITIZE_KEY );
-		if ( ! $active_tab ) {
-			$active_tab = 'dashboard';
-		}
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$active_tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'dashboard';
 		$stats = $this->core->get_stats();
 
 		// Branding Assets support compliant with WordPress guidelines with real-time timestamp cache buster

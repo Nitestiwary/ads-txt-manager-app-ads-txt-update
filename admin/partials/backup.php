@@ -10,7 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $ads_txt_manager_ads_backups = get_option( 'ads_txt_manager_ads_backups', array() );
+if ( ! is_array( $ads_txt_manager_ads_backups ) ) {
+	$ads_txt_manager_ads_backups = array();
+}
+
 $ads_txt_manager_app_backups = get_option( 'ads_txt_manager_app-ads_backups', array() );
+if ( ! is_array( $ads_txt_manager_app_backups ) ) {
+	$ads_txt_manager_app_backups = array();
+}
 ?>
 
 <div class="atm-section-header">
@@ -39,7 +46,12 @@ $ads_txt_manager_app_backups = get_option( 'ads_txt_manager_app-ads_backups', ar
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ( $ads_txt_manager_ads_backups as $ads_txt_manager_backup ) : ?>
+						<?php
+						foreach ( $ads_txt_manager_ads_backups as $ads_txt_manager_backup ) :
+							if ( ! is_array( $ads_txt_manager_backup ) || ! isset( $ads_txt_manager_backup['timestamp'] ) ) {
+								continue;
+							}
+						?>
 							<tr>
 								<td><?php echo esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $ads_txt_manager_backup['timestamp'] ) ); ?></td>
 								<td><?php echo esc_html( strlen( $ads_txt_manager_backup['content'] ) ); ?> bytes</td>
@@ -81,7 +93,12 @@ $ads_txt_manager_app_backups = get_option( 'ads_txt_manager_app-ads_backups', ar
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ( $ads_txt_manager_app_backups as $ads_txt_manager_backup ) : ?>
+						<?php
+						foreach ( $ads_txt_manager_app_backups as $ads_txt_manager_backup ) :
+							if ( ! is_array( $ads_txt_manager_backup ) || ! isset( $ads_txt_manager_backup['timestamp'] ) ) {
+								continue;
+							}
+						?>
 							<tr>
 								<td><?php echo esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $ads_txt_manager_backup['timestamp'] ) ); ?></td>
 								<td><?php echo esc_html( strlen( $ads_txt_manager_backup['content'] ) ); ?> bytes</td>
