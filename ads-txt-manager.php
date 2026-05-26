@@ -3,7 +3,7 @@
  * Developer: Monetiscope (https://monetiscope.com)
  *
  * Plugin Name: Ads.txt Manager - App-ads.txt Update
- * Plugin URI:  https://monetiscope.com
+ * Plugin URI:  https://github.com/Nitestiwary/ads.txt
  * Description: A lightweight, modern, beginner-friendly WordPress plugin to easily create, manage, validate, and update ads.txt and app-ads.txt files directly from the dashboard.
  * Version:     1.0.0
  * Author:      Monetiscope
