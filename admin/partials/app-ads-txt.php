@@ -21,13 +21,6 @@ $auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validat
 	</p>
 </div>
 
-<!-- Promo Banner for App Publishers -->
-<div class="atm-promo-banner-container margin-bottom-20">
-	<a href="https://monetiscope.com/contact/" target="_blank" rel="noopener noreferrer">
-		<img src="<?php echo esc_url( $banner_app ); ?>" alt="Uplift Your Ad Revenue upto 30% - Monetiscope App Monetization" class="atm-promo-banner-img" />
-	</a>
-</div>
-
 <div class="atm-editor-container">
 	<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" id="atm-app-ads-txt-form">
 		<?php wp_nonce_field( 'ads_txt_manager_action', 'ads_txt_nonce' ); ?>
@@ -67,4 +60,11 @@ $auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validat
 			</button>
 		</div>
 	</form>
+</div>
+
+<!-- Promo Banner for App Publishers -->
+<div class="atm-promo-banner-container margin-bottom-20" style="margin-top: 24px;">
+	<a href="https://monetiscope.com/contact/" target="_blank" rel="noopener noreferrer">
+		<img src="<?php echo esc_url( $banner_app ); ?>" alt="Uplift Your Ad Revenue upto 30% - Monetiscope App Monetization" class="atm-promo-banner-img" />
+	</a>
 </div>
