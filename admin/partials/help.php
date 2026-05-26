@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Help and FAQs panel view.
  *

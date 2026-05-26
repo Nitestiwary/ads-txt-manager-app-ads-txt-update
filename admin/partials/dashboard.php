@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Main dashboard layout.
  *

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Backups management view.
  *

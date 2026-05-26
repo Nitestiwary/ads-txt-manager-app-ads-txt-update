@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * App-ads.txt view.
  *

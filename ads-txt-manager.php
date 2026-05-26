@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Developer: Monetiscope (https://monetiscope.com)
  *
