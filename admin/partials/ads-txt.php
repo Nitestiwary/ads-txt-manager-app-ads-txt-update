@@ -9,15 +9,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$ads_content = get_option( 'ads_txt_manager_ads_txt', '' );
-$settings = get_option( 'ads_txt_manager_settings', array() );
-$auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validation'] : '1';
+$atm_ads_content = get_option( 'ads_txt_manager_ads_txt', '' );
+$atm_settings = get_option( 'ads_txt_manager_settings', array() );
+$atm_auto_validate = isset( $atm_settings['auto_validation'] ) ? $atm_settings['auto_validation'] : '1';
 ?>
 
 <div class="atm-section-header">
-	<h2><span class="dashicons dashicons-admin-site"></span> <?php esc_html_e( 'Manage ads.txt', 'ads-txt-main' ); ?></h2>
+	<h2><span class="dashicons dashicons-admin-site"></span> <?php esc_html_e( 'Manage ads.txt', 'ads.txt-main' ); ?></h2>
 	<p class="atm-section-desc">
-		<?php esc_html_e( 'Customize your web ads.txt file. Make sure your seller lines are perfectly formatted to prevent loss of ad revenue.', 'ads-txt-main' ); ?>
+		<?php esc_html_e( 'Customize your web ads.txt file. Make sure your seller lines are perfectly formatted to prevent loss of ad revenue.', 'ads.txt-main' ); ?>
 	</p>
 </div>
 
@@ -29,9 +29,9 @@ $auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validat
 
 		<div class="atm-textarea-wrapper">
 			<label for="ads_txt_content" class="atm-input-label">
-				<?php esc_html_e( 'Edit ads.txt lines:', 'ads-txt-main' ); ?>
+				<?php esc_html_e( 'Edit ads.txt lines:', 'ads.txt-main' ); ?>
 				<span class="atm-preview-link-hint">
-					(<?php esc_html_e( 'Live Preview URL:', 'ads-txt-main' ); ?> <a href="<?php echo esc_url( $stats['ads']['url'] ); ?>" target="_blank"><?php echo esc_url( $stats['ads']['url'] ); ?></a>)
+					(<?php esc_html_e( 'Live Preview URL:', 'ads.txt-main' ); ?> <a href="<?php echo esc_url( $stats['ads']['url'] ); ?>" target="_blank"><?php echo esc_url( $stats['ads']['url'] ); ?></a>)
 				</span>
 			</label>
 			<textarea 
@@ -39,15 +39,15 @@ $auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validat
 				id="ads_txt_content" 
 				class="atm-code-editor" 
 				placeholder="google.com, pub-1020304050607080, DIRECT, f08c47fec0942fa0"
-				data-validate="<?php echo esc_attr( $auto_validate ); ?>"
-			><?php echo esc_textarea( $ads_content ); ?></textarea>
+				data-validate="<?php echo esc_attr( $atm_auto_validate ); ?>"
+			><?php echo esc_textarea( $atm_ads_content ); ?></textarea>
 		</div>
 
 		<!-- Live Validation Container -->
 		<div id="atm-live-validation-result" class="atm-live-validation-box hidden">
 			<div class="atm-validation-header">
 				<span class="dashicons dashicons-warning"></span>
-				<h3><?php esc_html_e( 'Live Validation Analysis', 'ads-txt-main' ); ?></h3>
+				<h3><?php esc_html_e( 'Live Validation Analysis', 'ads.txt-main' ); ?></h3>
 			</div>
 			<div class="atm-validation-body">
 				<!-- Injected by JS -->
@@ -56,7 +56,7 @@ $auto_validate = isset( $settings['auto_validation'] ) ? $settings['auto_validat
 
 		<div class="atm-form-actions">
 			<button type="submit" class="button button-primary button-hero atm-submit-btn">
-				<?php esc_html_e( 'Save Ads.txt Changes', 'ads-txt-main' ); ?>
+				<?php esc_html_e( 'Save Ads.txt Changes', 'ads.txt-main' ); ?>
 			</button>
 		</div>
 	</form>

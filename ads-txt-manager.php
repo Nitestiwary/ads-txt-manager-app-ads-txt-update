@@ -9,7 +9,7 @@
  * Author:      Monetiscope
  * Author URI:  https://monetiscope.com
  * License:     GPLv2 or later
- * Text Domain: ads-txt-main
+ * Text Domain: ads.txt-main
  * Requires at least: 6.0
  * Requires PHP:      7.4
  */
@@ -120,11 +120,11 @@ add_action( 'parse_request', 'ads_txt_manager_parse_request' );
 /**
  * Instantiate Main core processes.
  */
-function run_ads_txt_manager() {
+function ads_txt_manager_run() {
 	$core = new Ads_Txt_Core();
 	if ( is_admin() ) {
 		$admin = new Ads_Txt_Admin( $core );
 		$admin->init();
 	}
 }
-add_action( 'plugins_loaded', 'run_ads_txt_manager' );
+add_action( 'plugins_loaded', 'ads_txt_manager_run' );

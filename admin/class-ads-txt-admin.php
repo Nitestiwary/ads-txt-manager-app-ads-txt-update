@@ -38,8 +38,8 @@ class Ads_Txt_Admin {
 	 */
 	public function register_menu() {
 		add_menu_page(
-			__( 'Ads.txt Manager - App-ads.txt Update', 'ads-txt-main' ),
-			__( 'Ads.txt Manager', 'ads-txt-main' ),
+			__( 'Ads.txt Manager - App-ads.txt Update', 'ads.txt-main' ),
+			__( 'Ads.txt Manager', 'ads.txt-main' ),
 			'manage_options',
 			'ads-txt-main',
 			array( $this, 'render_dashboard' ),
@@ -79,12 +79,12 @@ class Ads_Txt_Admin {
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => wp_create_nonce( 'ads_txt_manager_nonce' ),
 				'i18n'     => array(
-					'saving'        => __( 'Saving...', 'ads-txt-main' ),
-					'saved'         => __( 'Saved Successfully!', 'ads-txt-main' ),
-					'save_failed'   => __( 'Failed to save settings.', 'ads-txt-main' ),
-					'valid'         => __( 'Syntax is perfectly valid!', 'ads-txt-main' ),
-					'duplicate'     => __( 'Duplicate entry found.', 'ads-txt-main' ),
-					'invalid_domain'=> __( 'Invalid domain detected.', 'ads-txt-main' ),
+					'saving'        => __( 'Saving...', 'ads.txt-main' ),
+					'saved'         => __( 'Saved Successfully!', 'ads.txt-main' ),
+					'save_failed'   => __( 'Failed to save settings.', 'ads.txt-main' ),
+					'valid'         => __( 'Syntax is perfectly valid!', 'ads.txt-main' ),
+					'duplicate'     => __( 'Duplicate entry found.', 'ads.txt-main' ),
+					'invalid_domain'=> __( 'Invalid domain detected.', 'ads.txt-main' ),
 				)
 			)
 		);
@@ -106,12 +106,12 @@ class Ads_Txt_Admin {
 		}
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'Unauthorized access.', 'ads-txt-main' ) );
+			wp_die( esc_html__( 'Unauthorized access.', 'ads.txt-main' ) );
 		}
 
 		// Verify nonce securely
 		if ( ! isset( $_POST['ads_txt_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['ads_txt_nonce'] ) ), 'ads_txt_manager_action' ) ) {
-			wp_die( esc_html__( 'Security check failed.', 'ads-txt-main' ) );
+			wp_die( esc_html__( 'Security check failed.', 'ads.txt-main' ) );
 		}
 
 		$action = sanitize_key( wp_unslash( $_POST['ads_txt_action'] ) );
@@ -164,7 +164,7 @@ class Ads_Txt_Admin {
 						}
 						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&success=import' ) );
 					} else {
-						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&error=' . urlencode( __( 'Invalid file format.', 'ads-txt-main' ) ) ) );
+						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager&tab=settings&error=' . urlencode( __( 'Invalid file format.', 'ads.txt-main' ) ) ) );
 					}
 				}
 				exit;
