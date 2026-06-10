@@ -72,11 +72,11 @@ Yes! The dynamic rewrite fallback bypasses common page caching systems by utiliz
 
 == Screenshots ==
 
-1. **Dashboard Overview** - Modern admin panel displaying real-time files active status, entries counts, and public preview links.
-2. **Ads.txt Editor Panel** - Secure, syntax-highlighted editor box with live validation logging.
-3. **App-ads.txt Editor Panel** - App-ads.txt custom entries editor with IAB verification highlights.
-4. **Historical Backups Table** - Historical revisions management panel allowing rapid one-click rollback options.
-5. **Validation Diagnostics** - In-depth validation log showing clear formatting warnings and duplicate highlights.
+1. **Dashboard Overview** - Real-time overview of Web Ads.txt and App app-ads.txt status, entries count, physical file status, write permissions, and public URL preview links.
+2. **Ads.txt Editor** - Dark-themed inline editor for managing ads.txt seller lines with live validation analysis highlighting duplicate entries.
+3. **App-ads.txt Editor** - Dedicated editor for managing app-ads.txt entries for mobile app monetization networks like AdMob and AppLovin.
+4. **Validation Diagnostics** - Detailed line-by-line validation panel showing syntax errors, duplicate lines, and IAB compliance status for both ads.txt and app-ads.txt.
+5. **Plugin Settings & Tools** - Configure validation rules, automatic backups, real-time checks, and use import/export tools for migrating your ads.txt configuration.
 
 == Source Code ==
 
