@@ -11,12 +11,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="wrap ads-txt-manager-wrap">
+	<!-- Hidden h1 for WordPress notice positioning - WP JS moves notices after first h1 -->
+	<h1 class="screen-reader-text"><?php esc_html_e( 'Seller Records - Ads.txt Manager & app-ads.txt', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h1>
+
 	<!-- Plugin Header Card -->
 	<div class="atm-header-card">
 		<div class="atm-header-left">
 			<img src="<?php echo esc_url( $logo_url ); ?>" alt="Ads.txt Manager" class="atm-plugin-logo" />
 			<div class="atm-header-title-wrapper">
-				<h1 class="atm-main-title"><?php esc_html_e( 'Seller Records', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h1>
+				<h2 class="atm-main-title"><?php esc_html_e( 'Seller Records', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h2>
 				<p class="atm-subtitle"><?php esc_html_e( 'Manage and update ads.txt & app-ads.txt files with real-time validation by Monetiscope', 'ads-txt-manager-app-ads-txt-update-main' ); ?></p>
 			</div>
 		</div>
