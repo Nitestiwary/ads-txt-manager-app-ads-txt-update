@@ -10,13 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="wrap monetiscope-seller-records-wrap">
+<div class="wrap ads-txt-manager-wrap">
 	<!-- Plugin Header Card -->
 	<div class="atm-header-card">
 		<div class="atm-header-left">
 			<img src="<?php echo esc_url( $logo_url ); ?>" alt="Ads.txt Manager" class="atm-plugin-logo" />
 			<div class="atm-header-title-wrapper">
-				<h1 class="atm-main-title"><?php esc_html_e( 'Ads.txt Manager', 'monetiscope-seller-records' ); ?></h1>
+				<h1 class="atm-main-title"><?php esc_html_e( 'Seller Records', 'monetiscope-seller-records' ); ?></h1>
 				<p class="atm-subtitle"><?php esc_html_e( 'Manage and update ads.txt & app-ads.txt files with real-time validation by Monetiscope', 'monetiscope-seller-records' ); ?></p>
 			</div>
 		</div>

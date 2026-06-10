@@ -1,5 +1,7 @@
 :root{--atm-primary:#1e3a8a;--atm-primary-hover:#1e40af;--atm-secondary:#0f172a;--atm-accent:#f97316;--atm-success:#10b981;--atm-warning:#f59e0b;--atm-danger:#ef4444;--atm-bg:#f8fafc;--atm-card-bg:#ffffff;--atm-border:#e2e8f0;--atm-text:#334155;--atm-text-light:#64748b;--atm-shadow:0 4px 6px -1px rgb(0 0 0 / 0.05),0 2px 4px -2px rgb(0 0 0 / 0.05);--atm-shadow-lg:0 10px 15px -3px rgb(0 0 0 / 0.05),0 4px 6px -4px rgb(0 0 0 / 0.05);--atm-radius:12px;}
-.ads-txt-manager-app-ads-txt-update-wrap{margin:20px 20px 0 0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;color:var(--atm-text);}
+.ads-txt-manager-wrap{margin:20px 20px 0 0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;color:var(--atm-text);}
+/* Prevent WordPress core admin notices from appearing inside plugin header */
+.ads-txt-manager-wrap .atm-header-card .notice,.ads-txt-manager-wrap .atm-header-card .update-message{display:none !important;}
 .atm-header-card{background:linear-gradient(135deg,var(--atm-secondary) 0%,#1e293b 100%);padding:24px 32px;border-radius:var(--atm-radius);display:flex;justify-content:space-between;align-items:center;color:#ffffff;box-shadow:var(--atm-shadow-lg);margin-bottom:24px;position:relative;overflow:hidden;}
 .atm-header-card::before{content:'';position:absolute;top:-50%;right:-20%;width:300px;height:300px;background:radial-gradient(circle,rgba(249,115,22,0.15) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
 .atm-header-left{display:flex;align-items:center;gap:20px;}

@@ -38,8 +38,8 @@ class Ads_Txt_Admin {
 	 */
 	public function register_menu() {
 		add_menu_page(
-			__( 'Ads.txt Manager - App-ads.txt Update', 'monetiscope-seller-records' ),
-			__( 'Ads.txt Manager', 'monetiscope-seller-records' ),
+			__( 'Seller Records - Ads.txt Manager & app-ads.txt', 'monetiscope-seller-records' ),
+			__( 'Seller Records', 'monetiscope-seller-records' ),
 			'manage_options',
 			'monetiscope-seller-records',
 			array( $this, 'render_dashboard' ),
