@@ -1,5 +1,5 @@
-=== Ads.txt Manager - App-ads.txt Update ===
-Contributors: Monetiscope
+=== Seller Records - Ads.txt Manager & app-ads.txt ===
+Contributors: monetiscopeadx
 Tags: ads.txt, app-ads.txt, admob, adsense, monetiscope
 Requires at least: 6.0
 Tested up to: 7.0
@@ -13,7 +13,7 @@ Lightweight, secure plugin to easily manage, validate, and update your ads.txt a
 
 == Description ==
 
-Maximize your ad revenue, bypass crawlers index issues, and prevent unauthorized ad inventory selling with **Ads.txt Manager - App-ads.txt Update**, developed by [Monetiscope](https://monetiscope.com). This plugin provides a highly professional, modern, and beginner-friendly dashboard to edit, validate, and manage authorized seller records for both web inventories (ads.txt) and mobile application listings (app-ads.txt).
+Maximize your ad revenue, bypass crawlers index issues, and prevent unauthorized ad inventory selling with **Seller Records - Ads.txt Manager & app-ads.txt**, developed by [Monetiscope](https://monetiscope.com). This plugin provides a highly professional, modern, and beginner-friendly dashboard to edit, validate, and manage authorized seller records for both web inventories (ads.txt) and mobile application listings (app-ads.txt).
 
 Whether you monetize using Google AdSense, AdMob, Google Ad Exchange (AdX), AppLovin, Unity Ads, IronSource, or any other premium programmatic advertising mediation stack, this plugin ensures your seller configuration complies perfectly with IAB Tech Lab specifications.
 
@@ -52,7 +52,7 @@ To assist publishers in scaling their ad yield, this plugin features optional pr
 
 == Installation ==
 
-1. Upload the entire `ads-txt-manager` folder to your `/wp-content/plugins/` directory, or search and install it directly via your WordPress Admin Plugins installer.
+1. Upload the entire `ads-txt-manager-app-ads-txt-update` folder to your `/wp-content/plugins/` directory, or search and install it directly via your WordPress Admin Plugins installer.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Access the plugin settings from the new **Ads.txt Manager** menu on your left sidebar.
 
@@ -77,6 +77,10 @@ Yes! The dynamic rewrite fallback bypasses common page caching systems by utiliz
 3. **App-ads.txt Editor Panel** - App-ads.txt custom entries editor with IAB verification highlights.
 4. **Historical Backups Table** - Historical revisions management panel allowing rapid one-click rollback options.
 5. **Validation Diagnostics** - In-depth validation log showing clear formatting warnings and duplicate highlights.
+
+== Source Code ==
+
+The unminified source of ssets/js/admin-script.js is available as ssets/js/admin-script.src.js within this plugin, and also at the GitHub repository: https://github.com/Nitestiwary/ads-txt-manager-app-ads-txt-update
 
 == Changelog ==
 

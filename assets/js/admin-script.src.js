@@ -1,0 +1,139 @@
+(function ($) {
+    'use strict';
+
+    $(document).ready(function () {
+
+        var $editor = $('.atm-code-editor');
+
+        if ($editor.length) {
+            var shouldValidate = $editor.data('validate') == '1';
+
+            if (shouldValidate) {
+                performLiveValidation($editor);
+
+                var timer;
+                $editor.on('input propertychange', function () {
+                    clearTimeout(timer);
+                    timer = setTimeout(function () {
+                        performLiveValidation($editor);
+                    }, 400);
+                });
+            }
+        }
+
+        /**
+         * Perform live validation of ads.txt / app-ads.txt content.
+         *
+         * @param {jQuery} $el - The textarea element.
+         */
+        function performLiveValidation($el) {
+            var content    = $el.val();
+            var $resultBox  = $('#atm-live-validation-result');
+            var $resultBody = $resultBox.find('.atm-validation-body');
+
+            if (!content || !content.trim()) {
+                $resultBox.addClass('hidden');
+                return;
+            }
+
+            var lines          = content.split('\n');
+            var errors         = [];
+            var warnings       = [];
+            var seen           = {};
+            var totalCount     = 0;
+            var duplicateCount = 0;
+
+            for (var i = 0; i < lines.length; i++) {
+                var lineNum    = i + 1;
+                var line       = lines[i].trim();
+
+                // Skip empty lines and comments.
+                if (!line || line.indexOf('#') === 0) {
+                    continue;
+                }
+
+                totalCount++;
+
+                // Duplicate detection (case-insensitive, whitespace-normalised).
+                var normalized = line.toLowerCase().replace(/\s+/g, '');
+                if (seen[normalized]) {
+                    duplicateCount++;
+                    warnings.push({
+                        line    : lineNum,
+                        message : 'Duplicate entry detected (matches line ' + seen[normalized] + ')'
+                    });
+                    continue;
+                }
+                seen[normalized] = lineNum;
+
+                // Must have 3 or 4 comma-separated values.
+                var parts = line.split(',');
+                var count = parts.length;
+
+                if (count < 3 || count > 4) {
+                    errors.push({
+                        line    : lineNum,
+                        message : 'Invalid formatting. Must contain 3 or 4 comma-separated values (Domain, Publisher ID, Relationship, optional Certification Authority ID).'
+                    });
+                    continue;
+                }
+
+                var domain   = parts[0].trim();
+                var pubId    = parts[1].trim();
+                var relation = parts[2].trim().toUpperCase();
+
+                // Validate domain format.
+                var domainRegex = /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$/i;
+                if (!domainRegex.test(domain)) {
+                    errors.push({
+                        line    : lineNum,
+                        message : 'Invalid domain structure: "' + domain + '"'
+                    });
+                }
+
+                // Validate publisher / seller ID.
+                if (!pubId) {
+                    errors.push({
+                        line    : lineNum,
+                        message : 'Missing publisher/seller ID.'
+                    });
+                }
+
+                // Validate relationship field.
+                if (relation !== 'DIRECT' && relation !== 'RESELLER') {
+                    errors.push({
+                        line    : lineNum,
+                        message : 'Invalid relationship: "' + relation + '". Must be DIRECT or RESELLER (case insensitive).'
+                    });
+                }
+            }
+
+            // Render results.
+            if (errors.length > 0 || warnings.length > 0) {
+                var html = '<div class="atm-log-entries">';
+
+                errors.forEach(function (err) {
+                    html += '<div class="atm-log-item log-error">';
+                    html += '<span class="dashicons dashicons-dismiss"></span>';
+                    html += '<span><strong>Line ' + err.line + ':</strong> ' + err.message + '</span>';
+                    html += '</div>';
+                });
+
+                warnings.forEach(function (warn) {
+                    html += '<div class="atm-log-item log-warning">';
+                    html += '<span class="dashicons dashicons-warning"></span>';
+                    html += '<span><strong>Line ' + warn.line + ':</strong> ' + warn.message + '</span>';
+                    html += '</div>';
+                });
+
+                html += '</div>';
+                $resultBody.html(html);
+                $resultBox.removeClass('hidden');
+            } else {
+                $resultBox.addClass('hidden');
+            }
+        }
+
+    });
+
+})(jQuery);

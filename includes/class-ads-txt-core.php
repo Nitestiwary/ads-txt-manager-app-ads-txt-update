@@ -85,7 +85,7 @@ class Ads_Txt_Core {
 		if ( empty( $wp_filesystem ) || ! is_object( $wp_filesystem ) ) {
 			require_once ABSPATH . 'wp-admin/includes/file.php';
 			if ( ! WP_Filesystem() || ! is_object( $wp_filesystem ) ) {
-				return new WP_Error( 'filesystem_failed', __( 'WordPress failed to initialize filesystem. Using fallback routing instead.', 'ads-txt-main' ) );
+				return new WP_Error( 'filesystem_failed', __( 'WordPress failed to initialize filesystem. Using fallback routing instead.', 'monetiscope-seller-records' ) );
 			}
 		}
 
@@ -93,15 +93,15 @@ class Ads_Txt_Core {
 
 		// Check if file is writeable or parent directory is writeable using WP_Filesystem methods
 		if ( $wp_filesystem->exists( $file_path ) && ! $wp_filesystem->is_writable( $file_path ) ) {
-			return new WP_Error( 'file_not_writable', __( 'File root path is not writable. Using fallback routing instead.', 'ads-txt-main' ) );
+			return new WP_Error( 'file_not_writable', __( 'File root path is not writable. Using fallback routing instead.', 'monetiscope-seller-records' ) );
 		}
 
 		if ( ! $wp_filesystem->exists( $file_path ) && ! $wp_filesystem->is_writable( ABSPATH ) ) {
-			return new WP_Error( 'dir_not_writable', __( 'WordPress root directory is not writable. Using fallback routing instead.', 'ads-txt-main' ) );
+			return new WP_Error( 'dir_not_writable', __( 'WordPress root directory is not writable. Using fallback routing instead.', 'monetiscope-seller-records' ) );
 		}
 
 		if ( ! $wp_filesystem->put_contents( $file_path, $content, FS_CHMOD_FILE ) ) {
-			return new WP_Error( 'write_failed', __( 'WordPress failed to write the file directly. Using fallback routing instead.', 'ads-txt-main' ) );
+			return new WP_Error( 'write_failed', __( 'WordPress failed to write the file directly. Using fallback routing instead.', 'monetiscope-seller-records' ) );
 		}
 
 		return true;
@@ -138,12 +138,16 @@ class Ads_Txt_Core {
 			return;
 		}
 
-		$current_val = get_option( "ads_txt_manager_{$type}_txt", '' );
+		// Normalize type key: replace hyphens with underscores for valid option names.
+		// e.g. "app-ads" becomes "app_ads" so option is "ads_txt_manager_app_ads_txt".
+		$type_key = str_replace( '-', '_', $type );
+
+		$current_val = get_option( "ads_txt_manager_{$type_key}_txt", '' );
 		if ( empty( $current_val ) ) {
 			return;
 		}
 
-		$backups = get_option( "ads_txt_manager_{$type}_backups", array() );
+		$backups = get_option( "ads_txt_manager_{$type_key}_backups", array() );
 		$new_backup = array(
 			'timestamp' => current_time( 'timestamp' ),
 			'content'   => $current_val,
@@ -157,7 +161,7 @@ class Ads_Txt_Core {
 			$backups = array_slice( $backups, 0, 10 );
 		}
 
-		update_option( "ads_txt_manager_{$type}_backups", $backups );
+		update_option( "ads_txt_manager_{$type_key}_backups", $backups );
 	}
 
 	/**
@@ -174,7 +178,7 @@ class Ads_Txt_Core {
 				}
 			}
 		}
-		return new WP_Error( 'backup_not_found', __( 'Specified backup not found.', 'ads-txt-main' ) );
+		return new WP_Error( 'backup_not_found', __( 'Specified backup not found.', 'monetiscope-seller-records' ) );
 	}
 
 	/**
