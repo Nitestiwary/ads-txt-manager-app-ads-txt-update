@@ -1,6 +1,6 @@
 === Seller Records - Ads.txt Manager & app-ads.txt ===
 Contributors: monetiscopeadx
-Tags: ads.txt, app-ads.txt, admob, adsense, monetiscope
+Tags: ads.txt manager, app-ads.txt, ads.txt update, ads.txt line
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
