@@ -16,13 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="atm-header-left">
 			<img src="<?php echo esc_url( $logo_url ); ?>" alt="Ads.txt Manager" class="atm-plugin-logo" />
 			<div class="atm-header-title-wrapper">
-				<h1 class="atm-main-title"><?php esc_html_e( 'Seller Records', 'monetiscope-seller-records' ); ?></h1>
-				<p class="atm-subtitle"><?php esc_html_e( 'Manage and update ads.txt & app-ads.txt files with real-time validation by Monetiscope', 'monetiscope-seller-records' ); ?></p>
+				<h1 class="atm-main-title"><?php esc_html_e( 'Seller Records', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h1>
+				<p class="atm-subtitle"><?php esc_html_e( 'Manage and update ads.txt & app-ads.txt files with real-time validation by Monetiscope', 'ads-txt-manager-app-ads-txt-update-main' ); ?></p>
 			</div>
 		</div>
 		<div class="atm-header-right">
 			<span class="atm-developer-badge">
-				<?php esc_html_e( 'Developed by: ', 'monetiscope-seller-records' ); ?>
+				<?php esc_html_e( 'Developed by: ', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 				<a href="https://monetiscope.com" target="_blank" rel="noopener noreferrer">Monetiscope</a>
 			</span>
 		</div>
@@ -38,15 +38,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<p>
 				<?php
 				if ( 'restore' === $ads_txt_manager_success_type ) {
-					esc_html_e( 'Backup restored successfully.', 'monetiscope-seller-records' );
+					esc_html_e( 'Backup restored successfully.', 'ads-txt-manager-app-ads-txt-update-main' );
 				} elseif ( 'import' === $ads_txt_manager_success_type ) {
-					esc_html_e( 'Settings and files imported successfully.', 'monetiscope-seller-records' );
+					esc_html_e( 'Settings and files imported successfully.', 'ads-txt-manager-app-ads-txt-update-main' );
 				} elseif ( 'settings' === $ads_txt_manager_success_type ) {
-					esc_html_e( 'Settings updated successfully.', 'monetiscope-seller-records' );
+					esc_html_e( 'Settings updated successfully.', 'ads-txt-manager-app-ads-txt-update-main' );
 				} elseif ( 'reset' === $ads_txt_manager_success_type ) {
-					esc_html_e( 'Plugin reset successfully. All files and options cleared.', 'monetiscope-seller-records' );
+					esc_html_e( 'Plugin reset successfully. All files and options cleared.', 'ads-txt-manager-app-ads-txt-update-main' );
 				} else {
-					esc_html_e( 'Changes saved successfully.', 'monetiscope-seller-records' );
+					esc_html_e( 'Changes saved successfully.', 'ads-txt-manager-app-ads-txt-update-main' );
 				}
 				?>
 			</p>
@@ -65,26 +65,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<!-- Navigation Tabs -->
 	<nav class="nav-tab-wrapper atm-nav-tab-wrapper">
-		<a href="?page=monetiscope-seller-records&tab=dashboard" class="nav-tab <?php echo 'dashboard' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-dashboard"></span> <?php esc_html_e( 'Dashboard', 'monetiscope-seller-records' ); ?>
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=dashboard" class="nav-tab <?php echo 'dashboard' === $active_tab ? 'nav-tab-active' : ''; ?>">
+			<span class="dashicons dashicons-dashboard"></span> <?php esc_html_e( 'Dashboard', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
-		<a href="?page=monetiscope-seller-records&tab=ads-txt" class="nav-tab <?php echo 'ads-txt' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-admin-site"></span> <?php esc_html_e( 'Ads.txt', 'monetiscope-seller-records' ); ?>
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=ads-txt" class="nav-tab <?php echo 'ads-txt' === $active_tab ? 'nav-tab-active' : ''; ?>">
+			<span class="dashicons dashicons-admin-site"></span> <?php esc_html_e( 'Ads.txt', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
-		<a href="?page=monetiscope-seller-records&tab=app-ads-txt" class="nav-tab <?php echo 'app-ads-txt' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-phone"></span> <?php esc_html_e( 'App-ads.txt', 'monetiscope-seller-records' ); ?>
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=app-ads-txt" class="nav-tab <?php echo 'app-ads-txt' === $active_tab ? 'nav-tab-active' : ''; ?>">
+			<span class="dashicons dashicons-phone"></span> <?php esc_html_e( 'App-ads.txt', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
-		<a href="?page=monetiscope-seller-records&tab=validation" class="nav-tab <?php echo 'validation' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Validation', 'monetiscope-seller-records' ); ?>
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=validation" class="nav-tab <?php echo 'validation' === $active_tab ? 'nav-tab-active' : ''; ?>">
+			<span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Validation', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
-		<a href="?page=monetiscope-seller-records&tab=backup" class="nav-tab <?php echo 'backup' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-backup"></span> <?php esc_html_e( 'Backups', 'monetiscope-seller-records' ); ?>
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=backup" class="nav-tab <?php echo 'backup' === $active_tab ? 'nav-tab-active' : ''; ?>">
+			<span class="dashicons dashicons-backup"></span> <?php esc_html_e( 'Backups', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
-		<a href="?page=monetiscope-seller-records&tab=settings" class="nav-tab <?php echo 'settings' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-admin-generic"></span> <?php esc_html_e( 'Settings', 'monetiscope-seller-records' ); ?>
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=settings" class="nav-tab <?php echo 'settings' === $active_tab ? 'nav-tab-active' : ''; ?>">
+			<span class="dashicons dashicons-admin-generic"></span> <?php esc_html_e( 'Settings', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
-		<a href="?page=monetiscope-seller-records&tab=help" class="nav-tab <?php echo 'help' === $active_tab ? 'nav-tab-active' : ''; ?>">
-			<span class="dashicons dashicons-editor-help"></span> <?php esc_html_e( 'Help', 'monetiscope-seller-records' ); ?>
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=help" class="nav-tab <?php echo 'help' === $active_tab ? 'nav-tab-active' : ''; ?>">
+			<span class="dashicons dashicons-editor-help"></span> <?php esc_html_e( 'Help', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
 	</nav>
 
@@ -98,52 +98,52 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<!-- Ads.txt Status -->
 					<div class="atm-card">
 						<div class="atm-card-header">
-							<h2><?php esc_html_e( 'Web Ads.txt Overview', 'monetiscope-seller-records' ); ?></h2>
+							<h2><?php esc_html_e( 'Web Ads.txt Overview', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h2>
 							<span class="atm-status-badge <?php echo $stats['ads']['exists'] ? 'status-active' : 'status-inactive'; ?>">
-								<?php echo $stats['ads']['exists'] ? esc_html__( 'File Active', 'monetiscope-seller-records' ) : esc_html__( 'Not Created', 'monetiscope-seller-records' ); ?>
+								<?php echo $stats['ads']['exists'] ? esc_html__( 'File Active', 'ads-txt-manager-app-ads-txt-update-main' ) : esc_html__( 'Not Created', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 							</span>
 						</div>
 						<div class="atm-card-body">
 							<table class="atm-stats-table">
 								<tr>
-									<th><?php esc_html_e( 'Entries Count:', 'monetiscope-seller-records' ); ?></th>
+									<th><?php esc_html_e( 'Entries Count:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
 									<td><strong><?php echo esc_html( $stats['ads']['entries'] ); ?></strong></td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Physical File:', 'monetiscope-seller-records' ); ?></th>
+									<th><?php esc_html_e( 'Physical File:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
 									<td>
 										<?php if ( $stats['ads']['exists'] ) : ?>
-											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Created in Root', 'monetiscope-seller-records' ); ?>
+											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Created in Root', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 										<?php else : ?>
-											<span class="dashicons dashicons-warning text-warning"></span> <?php esc_html_e( 'Using Dynamic Fallback Route', 'monetiscope-seller-records' ); ?>
+											<span class="dashicons dashicons-warning text-warning"></span> <?php esc_html_e( 'Using Dynamic Fallback Route', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 										<?php endif; ?>
 									</td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Write Permissions:', 'monetiscope-seller-records' ); ?></th>
+									<th><?php esc_html_e( 'Write Permissions:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
 									<td>
 										<?php if ( $stats['ads']['writable'] ) : ?>
-											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Writable', 'monetiscope-seller-records' ); ?>
+											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Writable', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 										<?php else : ?>
-											<span class="dashicons dashicons-lock text-danger"></span> <?php esc_html_e( 'Root Unwritable (Fallback enabled)', 'monetiscope-seller-records' ); ?>
+											<span class="dashicons dashicons-lock text-danger"></span> <?php esc_html_e( 'Root Unwritable (Fallback enabled)', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 										<?php endif; ?>
 									</td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Last Updated:', 'monetiscope-seller-records' ); ?></th>
+									<th><?php esc_html_e( 'Last Updated:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
 									<td><?php echo esc_html( $stats['ads']['updated'] ); ?></td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Public URL:', 'monetiscope-seller-records' ); ?></th>
+									<th><?php esc_html_e( 'Public URL:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
 									<td>
 										<a href="<?php echo esc_url( $stats['ads']['url'] ); ?>" target="_blank" class="atm-button button-secondary">
-											<span class="dashicons dashicons-external"></span> <?php esc_html_e( 'View Public File', 'monetiscope-seller-records' ); ?>
+											<span class="dashicons dashicons-external"></span> <?php esc_html_e( 'View Public File', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 										</a>
 									</td>
 								</tr>
 							</table>
 							<div class="atm-card-actions">
-								<a href="?page=monetiscope-seller-records&tab=ads-txt" class="atm-button button-primary"><?php esc_html_e( 'Manage Ads.txt', 'monetiscope-seller-records' ); ?></a>
+								<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=ads-txt" class="atm-button button-primary"><?php esc_html_e( 'Manage Ads.txt', 'ads-txt-manager-app-ads-txt-update-main' ); ?></a>
 							</div>
 						</div>
 					</div>
@@ -151,52 +151,52 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<!-- App-ads.txt Status -->
 					<div class="atm-card">
 						<div class="atm-card-header">
-							<h2><?php esc_html_e( 'App app-ads.txt Overview', 'monetiscope-seller-records' ); ?></h2>
+							<h2><?php esc_html_e( 'App app-ads.txt Overview', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h2>
 							<span class="atm-status-badge <?php echo $stats['app_ads']['exists'] ? 'status-active' : 'status-inactive'; ?>">
-								<?php echo $stats['app_ads']['exists'] ? esc_html__( 'File Active', 'monetiscope-seller-records' ) : esc_html__( 'Not Created', 'monetiscope-seller-records' ); ?>
+								<?php echo $stats['app_ads']['exists'] ? esc_html__( 'File Active', 'ads-txt-manager-app-ads-txt-update-main' ) : esc_html__( 'Not Created', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 							</span>
 						</div>
 						<div class="atm-card-body">
 							<table class="atm-stats-table">
 								<tr>
-									<th><?php esc_html_e( 'Entries Count:', 'monetiscope-seller-records' ); ?></th>
+									<th><?php esc_html_e( 'Entries Count:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
 									<td><strong><?php echo esc_html( $stats['app_ads']['entries'] ); ?></strong></td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Physical File:', 'monetiscope-seller-records' ); ?></th>
+									<th><?php esc_html_e( 'Physical File:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
 									<td>
 										<?php if ( $stats['app_ads']['exists'] ) : ?>
-											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Created in Root', 'monetiscope-seller-records' ); ?>
+											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Created in Root', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 										<?php else : ?>
-											<span class="dashicons dashicons-warning text-warning"></span> <?php esc_html_e( 'Using Dynamic Fallback Route', 'monetiscope-seller-records' ); ?>
+											<span class="dashicons dashicons-warning text-warning"></span> <?php esc_html_e( 'Using Dynamic Fallback Route', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 										<?php endif; ?>
 									</td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Write Permissions:', 'monetiscope-seller-records' ); ?></th>
+									<th><?php esc_html_e( 'Write Permissions:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
 									<td>
 										<?php if ( $stats['app_ads']['writable'] ) : ?>
-											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Writable', 'monetiscope-seller-records' ); ?>
+											<span class="dashicons dashicons-yes-alt text-success"></span> <?php esc_html_e( 'Writable', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 										<?php else : ?>
-											<span class="dashicons dashicons-lock text-danger"></span> <?php esc_html_e( 'Root Unwritable (Fallback enabled)', 'monetiscope-seller-records' ); ?>
+											<span class="dashicons dashicons-lock text-danger"></span> <?php esc_html_e( 'Root Unwritable (Fallback enabled)', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 										<?php endif; ?>
 									</td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Last Updated:', 'monetiscope-seller-records' ); ?></th>
+									<th><?php esc_html_e( 'Last Updated:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
 									<td><?php echo esc_html( $stats['app_ads']['updated'] ); ?></td>
 								</tr>
 								<tr>
-									<th><?php esc_html_e( 'Public URL:', 'monetiscope-seller-records' ); ?></th>
+									<th><?php esc_html_e( 'Public URL:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
 									<td>
 										<a href="<?php echo esc_url( $stats['app_ads']['url'] ); ?>" target="_blank" class="atm-button button-secondary">
-											<span class="dashicons dashicons-external"></span> <?php esc_html_e( 'View Public File', 'monetiscope-seller-records' ); ?>
+											<span class="dashicons dashicons-external"></span> <?php esc_html_e( 'View Public File', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 										</a>
 									</td>
 								</tr>
 							</table>
 							<div class="atm-card-actions">
-								<a href="?page=monetiscope-seller-records&tab=app-ads-txt" class="atm-button button-primary"><?php esc_html_e( 'Manage App-ads.txt', 'monetiscope-seller-records' ); ?></a>
+								<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=app-ads-txt" class="atm-button button-primary"><?php esc_html_e( 'Manage App-ads.txt', 'ads-txt-manager-app-ads-txt-update-main' ); ?></a>
 							</div>
 						</div>
 					</div>

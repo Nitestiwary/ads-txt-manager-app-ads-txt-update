@@ -23,9 +23,9 @@ $ads_txt_manager_app_warnings = isset( $ads_txt_manager_app_ads_validation['warn
 ?>
 
 <div class="atm-section-header">
-	<h2><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Detailed Validation Diagnostics', 'monetiscope-seller-records' ); ?></h2>
+	<h2><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Detailed Validation Diagnostics', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h2>
 	<p class="atm-section-desc">
-		<?php esc_html_e( 'Review line-by-line issues, critical syntax formatting errors, and duplicate warnings for your active configuration.', 'monetiscope-seller-records' ); ?>
+		<?php esc_html_e( 'Review line-by-line issues, critical syntax formatting errors, and duplicate warnings for your active configuration.', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 	</p>
 </div>
 
@@ -33,21 +33,21 @@ $ads_txt_manager_app_warnings = isset( $ads_txt_manager_app_ads_validation['warn
 	<!-- Web Ads.txt Validation -->
 	<div class="atm-card">
 		<div class="atm-card-header">
-			<h3><?php esc_html_e( 'Web Ads.txt Verification', 'monetiscope-seller-records' ); ?></h3>
+			<h3><?php esc_html_e( 'Web Ads.txt Verification', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h3>
 			<span class="atm-status-badge <?php echo $ads_txt_manager_ads_validation['valid'] && empty( $ads_txt_manager_ads_warnings ) ? 'status-active' : 'status-inactive'; ?>">
-				<?php echo $ads_txt_manager_ads_validation['valid'] && empty( $ads_txt_manager_ads_warnings ) ? esc_html__( '100% Valid', 'monetiscope-seller-records' ) : esc_html__( 'Action Needed', 'monetiscope-seller-records' ); ?>
+				<?php echo $ads_txt_manager_ads_validation['valid'] && empty( $ads_txt_manager_ads_warnings ) ? esc_html__( '100% Valid', 'ads-txt-manager-app-ads-txt-update-main' ) : esc_html__( 'Action Needed', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 			</span>
 		</div>
 		<div class="atm-card-body">
 			<ul class="atm-bullets">
-				<li><strong><?php esc_html_e( 'Total Evaluated Lines:', 'monetiscope-seller-records' ); ?></strong> <?php echo esc_html( $ads_txt_manager_ads_validation['total'] ); ?></li>
-				<li><strong><?php esc_html_e( 'Syntax Errors:', 'monetiscope-seller-records' ); ?></strong> <span class="<?php echo ! empty( $ads_txt_manager_ads_errors ) ? 'text-danger font-bold' : ''; ?>"><?php echo count( $ads_txt_manager_ads_errors ); ?></span></li>
-				<li><strong><?php esc_html_e( 'Duplicate Lines:', 'monetiscope-seller-records' ); ?></strong> <span class="<?php echo $ads_txt_manager_ads_validation['duplicates'] > 0 ? 'text-warning font-bold' : ''; ?>"><?php echo esc_html( $ads_txt_manager_ads_validation['duplicates'] ); ?></span></li>
+				<li><strong><?php esc_html_e( 'Total Evaluated Lines:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></strong> <?php echo esc_html( $ads_txt_manager_ads_validation['total'] ); ?></li>
+				<li><strong><?php esc_html_e( 'Syntax Errors:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></strong> <span class="<?php echo ! empty( $ads_txt_manager_ads_errors ) ? 'text-danger font-bold' : ''; ?>"><?php echo count( $ads_txt_manager_ads_errors ); ?></span></li>
+				<li><strong><?php esc_html_e( 'Duplicate Lines:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></strong> <span class="<?php echo $ads_txt_manager_ads_validation['duplicates'] > 0 ? 'text-warning font-bold' : ''; ?>"><?php echo esc_html( $ads_txt_manager_ads_validation['duplicates'] ); ?></span></li>
 			</ul>
 
 			<?php if ( ! empty( $ads_txt_manager_ads_errors ) || ! empty( $ads_txt_manager_ads_warnings ) ) : ?>
 				<div class="atm-diagnostic-log">
-					<h4><?php esc_html_e( 'Diagnostic Log Messages:', 'monetiscope-seller-records' ); ?></h4>
+					<h4><?php esc_html_e( 'Diagnostic Log Messages:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h4>
 					<div class="atm-log-entries">
 						<?php foreach ( $ads_txt_manager_ads_errors as $ads_txt_manager_error ) : ?>
 							<div class="atm-log-item log-error">
@@ -67,7 +67,7 @@ $ads_txt_manager_app_warnings = isset( $ads_txt_manager_app_ads_validation['warn
 			<?php else : ?>
 				<div class="atm-alert alert-success">
 					<span class="dashicons dashicons-yes-alt"></span>
-					<p><?php esc_html_e( 'No issues found! Your ads.txt format conforms perfectly to IAB specifications.', 'monetiscope-seller-records' ); ?></p>
+					<p><?php esc_html_e( 'No issues found! Your ads.txt format conforms perfectly to IAB specifications.', 'ads-txt-manager-app-ads-txt-update-main' ); ?></p>
 				</div>
 			<?php endif; ?>
 		</div>
@@ -76,21 +76,21 @@ $ads_txt_manager_app_warnings = isset( $ads_txt_manager_app_ads_validation['warn
 	<!-- App-ads.txt Validation -->
 	<div class="atm-card">
 		<div class="atm-card-header">
-			<h3><?php esc_html_e( 'App-ads.txt Verification', 'monetiscope-seller-records' ); ?></h3>
+			<h3><?php esc_html_e( 'App-ads.txt Verification', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h3>
 			<span class="atm-status-badge <?php echo $ads_txt_manager_app_ads_validation['valid'] && empty( $ads_txt_manager_app_warnings ) ? 'status-active' : 'status-inactive'; ?>">
-				<?php echo $ads_txt_manager_app_ads_validation['valid'] && empty( $ads_txt_manager_app_warnings ) ? esc_html__( '100% Valid', 'monetiscope-seller-records' ) : esc_html__( 'Action Needed', 'monetiscope-seller-records' ); ?>
+				<?php echo $ads_txt_manager_app_ads_validation['valid'] && empty( $ads_txt_manager_app_warnings ) ? esc_html__( '100% Valid', 'ads-txt-manager-app-ads-txt-update-main' ) : esc_html__( 'Action Needed', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 			</span>
 		</div>
 		<div class="atm-card-body">
 			<ul class="atm-bullets">
-				<li><strong><?php esc_html_e( 'Total Evaluated Lines:', 'monetiscope-seller-records' ); ?></strong> <?php echo esc_html( $ads_txt_manager_app_ads_validation['total'] ); ?></li>
-				<li><strong><?php esc_html_e( 'Syntax Errors:', 'monetiscope-seller-records' ); ?></strong> <span class="<?php echo ! empty( $ads_txt_manager_app_errors ) ? 'text-danger font-bold' : ''; ?>"><?php echo count( $ads_txt_manager_app_errors ); ?></span></li>
-				<li><strong><?php esc_html_e( 'Duplicate Lines:', 'monetiscope-seller-records' ); ?></strong> <span class="<?php echo $ads_txt_manager_app_ads_validation['duplicates'] > 0 ? 'text-warning font-bold' : ''; ?>"><?php echo esc_html( $ads_txt_manager_app_ads_validation['duplicates'] ); ?></span></li>
+				<li><strong><?php esc_html_e( 'Total Evaluated Lines:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></strong> <?php echo esc_html( $ads_txt_manager_app_ads_validation['total'] ); ?></li>
+				<li><strong><?php esc_html_e( 'Syntax Errors:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></strong> <span class="<?php echo ! empty( $ads_txt_manager_app_errors ) ? 'text-danger font-bold' : ''; ?>"><?php echo count( $ads_txt_manager_app_errors ); ?></span></li>
+				<li><strong><?php esc_html_e( 'Duplicate Lines:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></strong> <span class="<?php echo $ads_txt_manager_app_ads_validation['duplicates'] > 0 ? 'text-warning font-bold' : ''; ?>"><?php echo esc_html( $ads_txt_manager_app_ads_validation['duplicates'] ); ?></span></li>
 			</ul>
 
 			<?php if ( ! empty( $ads_txt_manager_app_errors ) || ! empty( $ads_txt_manager_app_warnings ) ) : ?>
 				<div class="atm-diagnostic-log">
-					<h4><?php esc_html_e( 'Diagnostic Log Messages:', 'monetiscope-seller-records' ); ?></h4>
+					<h4><?php esc_html_e( 'Diagnostic Log Messages:', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h4>
 					<div class="atm-log-entries">
 						<?php foreach ( $ads_txt_manager_app_errors as $ads_txt_manager_error ) : ?>
 							<div class="atm-log-item log-error">
@@ -110,7 +110,7 @@ $ads_txt_manager_app_warnings = isset( $ads_txt_manager_app_ads_validation['warn
 			<?php else : ?>
 				<div class="atm-alert alert-success">
 					<span class="dashicons dashicons-yes-alt"></span>
-					<p><?php esc_html_e( 'No issues found! Your app-ads.txt format conforms perfectly to IAB specifications.', 'monetiscope-seller-records' ); ?></p>
+					<p><?php esc_html_e( 'No issues found! Your app-ads.txt format conforms perfectly to IAB specifications.', 'ads-txt-manager-app-ads-txt-update-main' ); ?></p>
 				</div>
 			<?php endif; ?>
 		</div>

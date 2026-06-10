@@ -31,17 +31,47 @@ class Ads_Txt_Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_init', array( $this, 'handle_actions' ) );
+		add_action( 'current_screen', array( $this, 'suppress_notices_on_plugin_page' ) );
 	}
+
+	/**
+	 * Suppress WordPress core admin notices on our plugin page.
+	 * Prevents update nags and other WP notices from appearing inside the plugin header.
+	 *
+	 * @param WP_Screen $screen Current screen object.
+	 */
+	public function suppress_notices_on_plugin_page( $screen ) {
+		if ( 'toplevel_page_ads-txt-manager-app-ads-txt-update-main' === $screen->id ) {
+			remove_action( 'admin_notices', 'update_nag', 3 );
+			remove_action( 'admin_notices', 'maintenance_nag', 10 );
+			add_action( 'admin_notices', array( $this, 'move_notices_below_header' ), 0 );
+		}
+	}
+
+	/**
+	 * Output CSS to push any remaining admin notices below our plugin header card.
+	 */
+	public function move_notices_below_header() {
+		echo '<style>
+			.ads-txt-manager-wrap > .notice,
+			.ads-txt-manager-wrap > .updated,
+			.ads-txt-manager-wrap > .error,
+			.ads-txt-manager-wrap > .update-nag {
+				display: none !important;
+			}
+		</style>';
+	}
+
 
 	/**
 	 * Add menu items.
 	 */
 	public function register_menu() {
 		add_menu_page(
-			__( 'Seller Records - Ads.txt Manager & app-ads.txt', 'monetiscope-seller-records' ),
-			__( 'Seller Records', 'monetiscope-seller-records' ),
+			__( 'Seller Records - Ads.txt Manager & app-ads.txt', 'ads-txt-manager-app-ads-txt-update-main' ),
+			__( 'Seller Records', 'ads-txt-manager-app-ads-txt-update-main' ),
 			'manage_options',
-			'monetiscope-seller-records',
+			'ads-txt-manager-app-ads-txt-update-main',
 			array( $this, 'render_dashboard' ),
 			'dashicons-media-text',
 			85
@@ -52,19 +82,19 @@ class Ads_Txt_Admin {
 	 * Enqueue stylesheet and JavaScript.
 	 */
 	public function enqueue_assets( $hook ) {
-		if ( 'toplevel_page_monetiscope-seller-records' !== $hook && 'toplevel_page_monetiscope-seller-records' !== $hook ) {
+		if ( 'toplevel_page_ads-txt-manager-app-ads-txt-update-main' !== $hook && 'toplevel_page_ads-txt-manager-app-ads-txt-update-main' !== $hook ) {
 			return;
 		}
 
 		wp_enqueue_style(
-			'monetiscope-seller-records-admin-css',
+			'ads-txt-manager-app-ads-txt-update-main-admin-css',
 			ADS_TXT_MANAGER_URL . 'assets/css/admin-style.css',
 			array(),
 			ADS_TXT_MANAGER_VERSION
 		);
 
 		wp_enqueue_script(
-			'monetiscope-seller-records-admin-js',
+			'ads-txt-manager-app-ads-txt-update-main-admin-js',
 			ADS_TXT_MANAGER_URL . 'assets/js/admin-script.js',
 			array( 'jquery' ),
 			ADS_TXT_MANAGER_VERSION,
@@ -73,18 +103,18 @@ class Ads_Txt_Admin {
 
 		// Localize parameters for Javascript (dynamic settings & labels)
 		wp_localize_script(
-			'monetiscope-seller-records-admin-js',
+			'ads-txt-manager-app-ads-txt-update-main-admin-js',
 			'adsTxtManager',
 			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => wp_create_nonce( 'ads_txt_manager_nonce' ),
 				'i18n'     => array(
-					'saving'        => __( 'Saving...', 'monetiscope-seller-records' ),
-					'saved'         => __( 'Saved Successfully!', 'monetiscope-seller-records' ),
-					'save_failed'   => __( 'Failed to save settings.', 'monetiscope-seller-records' ),
-					'valid'         => __( 'Syntax is perfectly valid!', 'monetiscope-seller-records' ),
-					'duplicate'     => __( 'Duplicate entry found.', 'monetiscope-seller-records' ),
-					'invalid_domain'=> __( 'Invalid domain detected.', 'monetiscope-seller-records' ),
+					'saving'        => __( 'Saving...', 'ads-txt-manager-app-ads-txt-update-main' ),
+					'saved'         => __( 'Saved Successfully!', 'ads-txt-manager-app-ads-txt-update-main' ),
+					'save_failed'   => __( 'Failed to save settings.', 'ads-txt-manager-app-ads-txt-update-main' ),
+					'valid'         => __( 'Syntax is perfectly valid!', 'ads-txt-manager-app-ads-txt-update-main' ),
+					'duplicate'     => __( 'Duplicate entry found.', 'ads-txt-manager-app-ads-txt-update-main' ),
+					'invalid_domain'=> __( 'Invalid domain detected.', 'ads-txt-manager-app-ads-txt-update-main' ),
 				)
 			)
 		);
@@ -126,12 +156,12 @@ class Ads_Txt_Admin {
 		}
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'Unauthorized access.', 'monetiscope-seller-records' ) );
+			wp_die( esc_html__( 'Unauthorized access.', 'ads-txt-manager-app-ads-txt-update-main' ) );
 		}
 
 		// Verify nonce securely
 		if ( ! isset( $_POST['ads_txt_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['ads_txt_nonce'] ) ), 'ads_txt_manager_action' ) ) {
-			wp_die( esc_html__( 'Security check failed.', 'monetiscope-seller-records' ) );
+			wp_die( esc_html__( 'Security check failed.', 'ads-txt-manager-app-ads-txt-update-main' ) );
 		}
 
 		$action = sanitize_key( wp_unslash( $_POST['ads_txt_action'] ) );
@@ -141,9 +171,9 @@ class Ads_Txt_Admin {
 				$content = isset( $_POST['ads_txt_content'] ) ? sanitize_textarea_field( wp_unslash( $_POST['ads_txt_content'] ) ) : '';
 				$res = $this->core->save_ads_txt( $content );
 				if ( is_wp_error( $res ) ) {
-					wp_safe_redirect( admin_url( 'admin.php?page=monetiscope-seller-records&tab=ads-txt&error=' . urlencode( $res->get_error_message() ) ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=ads-txt&error=' . urlencode( $res->get_error_message() ) ) );
 				} else {
-					wp_safe_redirect( admin_url( 'admin.php?page=monetiscope-seller-records&tab=ads-txt&success=1' ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=ads-txt&success=1' ) );
 				}
 				exit;
 
@@ -151,9 +181,9 @@ class Ads_Txt_Admin {
 				$content = isset( $_POST['app_ads_txt_content'] ) ? sanitize_textarea_field( wp_unslash( $_POST['app_ads_txt_content'] ) ) : '';
 				$res = $this->core->save_app_ads_txt( $content );
 				if ( is_wp_error( $res ) ) {
-					wp_safe_redirect( admin_url( 'admin.php?page=monetiscope-seller-records&tab=app-ads-txt&error=' . urlencode( $res->get_error_message() ) ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=app-ads-txt&error=' . urlencode( $res->get_error_message() ) ) );
 				} else {
-					wp_safe_redirect( admin_url( 'admin.php?page=monetiscope-seller-records&tab=app-ads-txt&success=1' ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=app-ads-txt&success=1' ) );
 				}
 				exit;
 
@@ -162,9 +192,9 @@ class Ads_Txt_Admin {
 				$timestamp = isset( $_POST['backup_timestamp'] ) ? sanitize_text_field( wp_unslash( $_POST['backup_timestamp'] ) ) : '';
 				$res = $this->core->restore_backup( $type, $timestamp );
 				if ( is_wp_error( $res ) ) {
-					wp_safe_redirect( admin_url( 'admin.php?page=monetiscope-seller-records&tab=backup&error=' . urlencode( $res->get_error_message() ) ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=backup&error=' . urlencode( $res->get_error_message() ) ) );
 				} else {
-					wp_safe_redirect( admin_url( 'admin.php?page=monetiscope-seller-records&tab=backup&success=restore' ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=backup&success=restore' ) );
 				}
 				exit;
 
@@ -177,7 +207,7 @@ class Ads_Txt_Admin {
 					if ( empty( $wp_filesystem ) || ! is_object( $wp_filesystem ) ) {
 						require_once ABSPATH . 'wp-admin/includes/file.php';
 						if ( ! WP_Filesystem() || ! is_object( $wp_filesystem ) ) {
-							wp_safe_redirect( admin_url( 'admin.php?page=monetiscope-seller-records&tab=settings&error=' . urlencode( __( 'WordPress failed to initialize filesystem.', 'monetiscope-seller-records' ) ) ) );
+							wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=settings&error=' . urlencode( __( 'WordPress failed to initialize filesystem.', 'ads-txt-manager-app-ads-txt-update-main' ) ) ) );
 							exit;
 						}
 					}
@@ -193,9 +223,9 @@ class Ads_Txt_Admin {
 						if ( isset( $decoded['settings'] ) ) {
 							update_option( 'ads_txt_manager_settings', $decoded['settings'] );
 						}
-						wp_safe_redirect( admin_url( 'admin.php?page=monetiscope-seller-records&tab=settings&success=import' ) );
+						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=settings&success=import' ) );
 					} else {
-						wp_safe_redirect( admin_url( 'admin.php?page=monetiscope-seller-records&tab=settings&error=' . urlencode( __( 'Invalid file format.', 'monetiscope-seller-records' ) ) ) );
+						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=settings&error=' . urlencode( __( 'Invalid file format.', 'ads-txt-manager-app-ads-txt-update-main' ) ) ) );
 					}
 				}
 				exit;
@@ -206,7 +236,7 @@ class Ads_Txt_Admin {
 					'app_ads_txt' => get_option( 'ads_txt_manager_app_ads_txt', '' ),
 					'settings'    => get_option( 'ads_txt_manager_settings', array() ),
 				);
-				header( 'Content-Disposition: attachment; filename="monetiscope-seller-records-backup-' . current_time( 'Y-m-d' ) . '.json"' );
+				header( 'Content-Disposition: attachment; filename="ads-txt-manager-app-ads-txt-update-main-backup-' . current_time( 'Y-m-d' ) . '.json"' );
 				header( 'Content-Type: application/json; charset=utf-8' );
 				echo wp_json_encode( $export_data );
 				exit;
@@ -219,7 +249,7 @@ class Ads_Txt_Admin {
 					'duplicate_warning' => isset( $_POST['duplicate_warning'] ) ? '1' : '0',
 				);
 				update_option( 'ads_txt_manager_settings', $settings );
-				wp_safe_redirect( admin_url( 'admin.php?page=monetiscope-seller-records&tab=settings&success=settings' ) );
+				wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=settings&success=settings' ) );
 				exit;
 
 			case 'reset_settings':
@@ -240,7 +270,7 @@ class Ads_Txt_Admin {
 				);
 				update_option( 'ads_txt_manager_settings', $default_settings );
 
-				wp_safe_redirect( admin_url( 'admin.php?page=monetiscope-seller-records&tab=settings&success=reset' ) );
+				wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=settings&success=reset' ) );
 				exit;
 		}
 	}
