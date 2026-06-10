@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="atm-header-left">
 			<img src="<?php echo esc_url( $logo_url ); ?>" alt="Ads.txt Manager" class="atm-plugin-logo" />
 			<div class="atm-header-title-wrapper">
-				<h2 class="atm-main-title"><?php esc_html_e( 'Seller Records', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h2>
+				<h2 class="atm-main-title" style="color:#ffffff !important;font-size:26px;font-weight:700;margin:0 0 4px 0;padding:0;line-height:1.2;"><?php esc_html_e( 'Seller Records', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h2>
 				<p class="atm-subtitle"><?php esc_html_e( 'Manage and update ads.txt & app-ads.txt files with real-time validation by Monetiscope', 'ads-txt-manager-app-ads-txt-update-main' ); ?></p>
 			</div>
 		</div>
