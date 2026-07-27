@@ -68,25 +68,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<!-- Navigation Tabs -->
 	<nav class="nav-tab-wrapper atm-nav-tab-wrapper">
-		<a href="?page=ads-txt-manager-app-ads-txt-update&tab=dashboard" class="nav-tab <?php echo 'dashboard' === $active_tab ? 'nav-tab-active' : ''; ?>">
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=dashboard" class="nav-tab <?php echo 'dashboard' === $active_tab ? 'nav-tab-active' : ''; ?>">
 			<span class="dashicons dashicons-dashboard"></span> <?php esc_html_e( 'Dashboard', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
-		<a href="?page=ads-txt-manager-app-ads-txt-update&tab=ads-txt" class="nav-tab <?php echo 'ads-txt' === $active_tab ? 'nav-tab-active' : ''; ?>">
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=ads-txt" class="nav-tab <?php echo 'ads-txt' === $active_tab ? 'nav-tab-active' : ''; ?>">
 			<span class="dashicons dashicons-admin-site"></span> <?php esc_html_e( 'Ads.txt', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
-		<a href="?page=ads-txt-manager-app-ads-txt-update&tab=app-ads-txt" class="nav-tab <?php echo 'app-ads-txt' === $active_tab ? 'nav-tab-active' : ''; ?>">
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=app-ads-txt" class="nav-tab <?php echo 'app-ads-txt' === $active_tab ? 'nav-tab-active' : ''; ?>">
 			<span class="dashicons dashicons-phone"></span> <?php esc_html_e( 'App-ads.txt', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
-		<a href="?page=ads-txt-manager-app-ads-txt-update&tab=validation" class="nav-tab <?php echo 'validation' === $active_tab ? 'nav-tab-active' : ''; ?>">
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=validation" class="nav-tab <?php echo 'validation' === $active_tab ? 'nav-tab-active' : ''; ?>">
 			<span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Validation', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
-		<a href="?page=ads-txt-manager-app-ads-txt-update&tab=backup" class="nav-tab <?php echo 'backup' === $active_tab ? 'nav-tab-active' : ''; ?>">
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=backup" class="nav-tab <?php echo 'backup' === $active_tab ? 'nav-tab-active' : ''; ?>">
 			<span class="dashicons dashicons-backup"></span> <?php esc_html_e( 'Backups', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
-		<a href="?page=ads-txt-manager-app-ads-txt-update&tab=settings" class="nav-tab <?php echo 'settings' === $active_tab ? 'nav-tab-active' : ''; ?>">
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=settings" class="nav-tab <?php echo 'settings' === $active_tab ? 'nav-tab-active' : ''; ?>">
 			<span class="dashicons dashicons-admin-generic"></span> <?php esc_html_e( 'Settings', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
-		<a href="?page=ads-txt-manager-app-ads-txt-update&tab=help" class="nav-tab <?php echo 'help' === $active_tab ? 'nav-tab-active' : ''; ?>">
+		<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=help" class="nav-tab <?php echo 'help' === $active_tab ? 'nav-tab-active' : ''; ?>">
 			<span class="dashicons dashicons-editor-help"></span> <?php esc_html_e( 'Help', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 		</a>
 	</nav>
@@ -146,7 +146,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								</tr>
 							</table>
 							<div class="atm-card-actions">
-								<a href="?page=ads-txt-manager-app-ads-txt-update&tab=ads-txt" class="atm-button button-primary"><?php esc_html_e( 'Manage Ads.txt', 'ads-txt-manager-app-ads-txt-update-main' ); ?></a>
+								<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=ads-txt" class="atm-button button-primary"><?php esc_html_e( 'Manage Ads.txt', 'ads-txt-manager-app-ads-txt-update-main' ); ?></a>
 							</div>
 						</div>
 					</div>
@@ -199,7 +199,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								</tr>
 							</table>
 							<div class="atm-card-actions">
-								<a href="?page=ads-txt-manager-app-ads-txt-update&tab=app-ads-txt" class="atm-button button-primary"><?php esc_html_e( 'Manage App-ads.txt', 'ads-txt-manager-app-ads-txt-update-main' ); ?></a>
+								<a href="?page=ads-txt-manager-app-ads-txt-update-main&tab=app-ads-txt" class="atm-button button-primary"><?php esc_html_e( 'Manage App-ads.txt', 'ads-txt-manager-app-ads-txt-update-main' ); ?></a>
 							</div>
 						</div>
 					</div>

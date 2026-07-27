@@ -41,7 +41,7 @@ class Ads_Txt_Admin {
 	 * @param WP_Screen $screen Current screen object.
 	 */
 	public function suppress_notices_on_plugin_page( $screen ) {
-		if ( 'toplevel_page_ads-txt-manager-app-ads-txt-update' === $screen->id ) {
+		if ( 'toplevel_page_ads-txt-manager-app-ads-txt-update-main' === $screen->id ) {
 			remove_action( 'admin_notices', 'update_nag', 3 );
 			remove_action( 'admin_notices', 'maintenance_nag', 10 );
 			add_action( 'admin_notices', array( $this, 'move_notices_below_header' ), 0 );
@@ -82,7 +82,7 @@ class Ads_Txt_Admin {
 	 * Enqueue stylesheet and JavaScript.
 	 */
 	public function enqueue_assets( $hook ) {
-		if ( 'toplevel_page_ads-txt-manager-app-ads-txt-update' !== $hook && 'toplevel_page_ads-txt-manager-app-ads-txt-update' !== $hook ) {
+		if ( 'toplevel_page_ads-txt-manager-app-ads-txt-update-main' !== $hook && 'toplevel_page_ads-txt-manager-app-ads-txt-update-main' !== $hook ) {
 			return;
 		}
 
@@ -171,9 +171,9 @@ class Ads_Txt_Admin {
 				$content = isset( $_POST['ads_txt_content'] ) ? sanitize_textarea_field( wp_unslash( $_POST['ads_txt_content'] ) ) : '';
 				$res = $this->core->save_ads_txt( $content );
 				if ( is_wp_error( $res ) ) {
-					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update&tab=ads-txt&error=' . urlencode( $res->get_error_message() ) ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=ads-txt&error=' . urlencode( $res->get_error_message() ) ) );
 				} else {
-					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update&tab=ads-txt&success=1' ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=ads-txt&success=1' ) );
 				}
 				exit;
 
@@ -181,9 +181,9 @@ class Ads_Txt_Admin {
 				$content = isset( $_POST['app_ads_txt_content'] ) ? sanitize_textarea_field( wp_unslash( $_POST['app_ads_txt_content'] ) ) : '';
 				$res = $this->core->save_app_ads_txt( $content );
 				if ( is_wp_error( $res ) ) {
-					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update&tab=app-ads-txt&error=' . urlencode( $res->get_error_message() ) ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=app-ads-txt&error=' . urlencode( $res->get_error_message() ) ) );
 				} else {
-					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update&tab=app-ads-txt&success=1' ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=app-ads-txt&success=1' ) );
 				}
 				exit;
 
@@ -192,9 +192,9 @@ class Ads_Txt_Admin {
 				$timestamp = isset( $_POST['backup_timestamp'] ) ? sanitize_text_field( wp_unslash( $_POST['backup_timestamp'] ) ) : '';
 				$res = $this->core->restore_backup( $type, $timestamp );
 				if ( is_wp_error( $res ) ) {
-					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update&tab=backup&error=' . urlencode( $res->get_error_message() ) ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=backup&error=' . urlencode( $res->get_error_message() ) ) );
 				} else {
-					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update&tab=backup&success=restore' ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=backup&success=restore' ) );
 				}
 				exit;
 
@@ -207,7 +207,7 @@ class Ads_Txt_Admin {
 					if ( empty( $wp_filesystem ) || ! is_object( $wp_filesystem ) ) {
 						require_once ABSPATH . 'wp-admin/includes/file.php';
 						if ( ! WP_Filesystem() || ! is_object( $wp_filesystem ) ) {
-							wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update&tab=settings&error=' . urlencode( __( 'WordPress failed to initialize filesystem.', 'ads-txt-manager-app-ads-txt-update-main' ) ) ) );
+							wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=settings&error=' . urlencode( __( 'WordPress failed to initialize filesystem.', 'ads-txt-manager-app-ads-txt-update-main' ) ) ) );
 							exit;
 						}
 					}
@@ -223,9 +223,9 @@ class Ads_Txt_Admin {
 						if ( isset( $decoded['settings'] ) ) {
 							update_option( 'ads_txt_manager_settings', $decoded['settings'] );
 						}
-						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update&tab=settings&success=import' ) );
+						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=settings&success=import' ) );
 					} else {
-						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update&tab=settings&error=' . urlencode( __( 'Invalid file format.', 'ads-txt-manager-app-ads-txt-update-main' ) ) ) );
+						wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=settings&error=' . urlencode( __( 'Invalid file format.', 'ads-txt-manager-app-ads-txt-update-main' ) ) ) );
 					}
 				}
 				exit;
@@ -249,7 +249,7 @@ class Ads_Txt_Admin {
 					'duplicate_warning' => isset( $_POST['duplicate_warning'] ) ? '1' : '0',
 				);
 				update_option( 'ads_txt_manager_settings', $settings );
-				wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update&tab=settings&success=settings' ) );
+				wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=settings&success=settings' ) );
 				exit;
 
 			case 'reset_settings':
@@ -270,7 +270,7 @@ class Ads_Txt_Admin {
 				);
 				update_option( 'ads_txt_manager_settings', $default_settings );
 
-				wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update&tab=settings&success=reset' ) );
+				wp_safe_redirect( admin_url( 'admin.php?page=ads-txt-manager-app-ads-txt-update-main&tab=settings&success=reset' ) );
 				exit;
 		}
 	}
