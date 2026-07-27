@@ -21,9 +21,9 @@ if ( ! is_array( $ads_txt_manager_app_backups ) ) {
 ?>
 
 <div class="atm-section-header">
-	<h2><span class="dashicons dashicons-backup"></span> <?php esc_html_e( 'Auto Backup System', 'ads-txt-manager-app-ads-txt-update' ); ?></h2>
+	<h2><span class="dashicons dashicons-backup"></span> <?php esc_html_e( 'Auto Backup System', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h2>
 	<p class="atm-section-desc">
-		<?php esc_html_e( 'Roll back to a previous state of your ads.txt or app-ads.txt files. A backup is captured automatically every time you click save.', 'ads-txt-manager-app-ads-txt-update' ); ?>
+		<?php esc_html_e( 'Roll back to a previous state of your ads.txt or app-ads.txt files. A backup is captured automatically every time you click save.', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 	</p>
 </div>
 
@@ -31,18 +31,18 @@ if ( ! is_array( $ads_txt_manager_app_backups ) ) {
 	<!-- Ads.txt Backups -->
 	<div class="atm-card">
 		<div class="atm-card-header">
-			<h3><?php esc_html_e( 'Web Ads.txt Backup History', 'ads-txt-manager-app-ads-txt-update' ); ?></h3>
+			<h3><?php esc_html_e( 'Web Ads.txt Backup History', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h3>
 		</div>
 		<div class="atm-card-body">
 			<?php if ( empty( $ads_txt_manager_ads_backups ) ) : ?>
-				<p class="description"><?php esc_html_e( 'No backups created yet. Saving changes will automatically generate one here.', 'ads-txt-manager-app-ads-txt-update' ); ?></p>
+				<p class="description"><?php esc_html_e( 'No backups created yet. Saving changes will automatically generate one here.', 'ads-txt-manager-app-ads-txt-update-main' ); ?></p>
 			<?php else : ?>
 				<table class="atm-stats-table">
 					<thead>
 						<tr>
-							<th><?php esc_html_e( 'Date & Time', 'ads-txt-manager-app-ads-txt-update' ); ?></th>
-							<th><?php esc_html_e( 'Size', 'ads-txt-manager-app-ads-txt-update' ); ?></th>
-							<th><?php esc_html_e( 'Action', 'ads-txt-manager-app-ads-txt-update' ); ?></th>
+							<th><?php esc_html_e( 'Date & Time', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
+							<th><?php esc_html_e( 'Size', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
+							<th><?php esc_html_e( 'Action', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -62,8 +62,8 @@ if ( ! is_array( $ads_txt_manager_app_backups ) ) {
 										<input type="hidden" name="ads_txt_action" value="restore_backup" />
 										<input type="hidden" name="backup_type" value="ads" />
 										<input type="hidden" name="backup_timestamp" value="<?php echo esc_attr( $ads_txt_manager_backup['timestamp'] ); ?>" />
-										<button type="submit" class="button button-small button-secondary atm-button-inline" onclick="return confirm('<?php esc_attr_e( 'Are you sure you want to restore this backup? Your current ads.txt content will be backed up and replaced.', 'ads-txt-manager-app-ads-txt-update' ); ?>')">
-											<?php esc_html_e( 'Restore', 'ads-txt-manager-app-ads-txt-update' ); ?>
+										<button type="submit" class="button button-small button-secondary atm-button-inline" onclick="return confirm('<?php esc_attr_e( 'Are you sure you want to restore this backup? Your current ads.txt content will be backed up and replaced.', 'ads-txt-manager-app-ads-txt-update-main' ); ?>')">
+											<?php esc_html_e( 'Restore', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 										</button>
 									</form>
 								</td>
@@ -78,18 +78,18 @@ if ( ! is_array( $ads_txt_manager_app_backups ) ) {
 	<!-- App-ads.txt Backups -->
 	<div class="atm-card">
 		<div class="atm-card-header">
-			<h3><?php esc_html_e( 'App-ads.txt Backup History', 'ads-txt-manager-app-ads-txt-update' ); ?></h3>
+			<h3><?php esc_html_e( 'App-ads.txt Backup History', 'ads-txt-manager-app-ads-txt-update-main' ); ?></h3>
 		</div>
 		<div class="atm-card-body">
 			<?php if ( empty( $ads_txt_manager_app_backups ) ) : ?>
-				<p class="description"><?php esc_html_e( 'No backups created yet. Saving changes will automatically generate one here.', 'ads-txt-manager-app-ads-txt-update' ); ?></p>
+				<p class="description"><?php esc_html_e( 'No backups created yet. Saving changes will automatically generate one here.', 'ads-txt-manager-app-ads-txt-update-main' ); ?></p>
 			<?php else : ?>
 				<table class="atm-stats-table">
 					<thead>
 						<tr>
-							<th><?php esc_html_e( 'Date & Time', 'ads-txt-manager-app-ads-txt-update' ); ?></th>
-							<th><?php esc_html_e( 'Size', 'ads-txt-manager-app-ads-txt-update' ); ?></th>
-							<th><?php esc_html_e( 'Action', 'ads-txt-manager-app-ads-txt-update' ); ?></th>
+							<th><?php esc_html_e( 'Date & Time', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
+							<th><?php esc_html_e( 'Size', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
+							<th><?php esc_html_e( 'Action', 'ads-txt-manager-app-ads-txt-update-main' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -109,8 +109,8 @@ if ( ! is_array( $ads_txt_manager_app_backups ) ) {
 										<input type="hidden" name="ads_txt_action" value="restore_backup" />
 										<input type="hidden" name="backup_type" value="app-ads" />
 										<input type="hidden" name="backup_timestamp" value="<?php echo esc_attr( $ads_txt_manager_backup['timestamp'] ); ?>" />
-										<button type="submit" class="button button-small button-secondary atm-button-inline" onclick="return confirm('<?php esc_attr_e( 'Are you sure you want to restore this backup? Your current app-ads.txt content will be backed up and replaced.', 'ads-txt-manager-app-ads-txt-update' ); ?>')">
-											<?php esc_html_e( 'Restore', 'ads-txt-manager-app-ads-txt-update' ); ?>
+										<button type="submit" class="button button-small button-secondary atm-button-inline" onclick="return confirm('<?php esc_attr_e( 'Are you sure you want to restore this backup? Your current app-ads.txt content will be backed up and replaced.', 'ads-txt-manager-app-ads-txt-update-main' ); ?>')">
+											<?php esc_html_e( 'Restore', 'ads-txt-manager-app-ads-txt-update-main' ); ?>
 										</button>
 									</form>
 								</td>
