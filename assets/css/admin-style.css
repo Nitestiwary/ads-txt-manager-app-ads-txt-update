@@ -37,12 +37,12 @@
 .atm-stats-table td{color:var(--atm-secondary);}
 .atm-stats-table tr:last-child th,.atm-stats-table tr:last-child td{border-bottom:none;}
 /* Scoped button styles - only inside plugin wrap to avoid polluting WP admin */
-.ads-txt-manager-app-ads-txt-update-wrap .atm-button{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;transition:all 0.2s ease;border:none;}
-.ads-txt-manager-app-ads-txt-update-wrap .atm-button.button-primary{background:var(--atm-primary) !important;border-color:var(--atm-primary) !important;color:#ffffff !important;text-shadow:none !important;box-shadow:0 4px 6px -1px rgba(30,58,138,0.2) !important;}
-.ads-txt-manager-app-ads-txt-update-wrap .atm-button.button-primary:hover{background:var(--atm-primary-hover) !important;transform:translateY(-1px);}
-.ads-txt-manager-app-ads-txt-update-wrap .atm-button.button-secondary{background:#ffffff !important;border:1px solid var(--atm-border) !important;color:var(--atm-text) !important;box-shadow:var(--atm-shadow) !important;}
-.ads-txt-manager-app-ads-txt-update-wrap .atm-button.button-secondary:hover{background:#f8fafc !important;border-color:#cbd5e1 !important;}
-.ads-txt-manager-app-ads-txt-update-wrap .atm-button-inline{padding:4px 10px !important;font-size:12px !important;border-radius:6px !important;}
+.ads-txt-manager-wrap .atm-button{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;transition:all 0.2s ease;border:none;}
+.ads-txt-manager-wrap .atm-button.button-primary{background:var(--atm-primary) !important;border-color:var(--atm-primary) !important;color:#ffffff !important;text-shadow:none !important;box-shadow:0 4px 6px -1px rgba(30,58,138,0.2) !important;}
+.ads-txt-manager-wrap .atm-button.button-primary:hover{background:var(--atm-primary-hover) !important;transform:translateY(-1px);}
+.ads-txt-manager-wrap .atm-button.button-secondary{background:#ffffff !important;border:1px solid var(--atm-border) !important;color:var(--atm-text) !important;box-shadow:var(--atm-shadow) !important;}
+.ads-txt-manager-wrap .atm-button.button-secondary:hover{background:#f8fafc !important;border-color:#cbd5e1 !important;}
+.ads-txt-manager-wrap .atm-button-inline{padding:4px 10px !important;font-size:12px !important;border-radius:6px !important;}
 .atm-editor-container{background:#ffffff;border-radius:var(--atm-radius);padding:28px;border:1px solid var(--atm-border);box-shadow:var(--atm-shadow);}
 .atm-input-label{display:flex;justify-content:space-between;font-size:15px;font-weight:600;color:var(--atm-secondary);margin-bottom:12px;}
 .atm-preview-link-hint{font-size:13px;font-weight:400;color:var(--atm-text-light);}
