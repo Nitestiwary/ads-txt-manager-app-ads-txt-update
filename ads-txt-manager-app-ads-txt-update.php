@@ -5,7 +5,7 @@
  * Plugin Name: Seller Records - Ads.txt Manager & app-ads.txt
  * Plugin URI:  https://github.com/Nitestiwary/ads-txt-manager-app-ads-txt-update
  * Description: A lightweight, modern, beginner-friendly WordPress plugin to easily create, manage, validate, and update ads.txt and app-ads.txt files directly from the dashboard.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Monetiscope
  * Author URI:  https://monetiscope.com
  * License:     GPLv2 or later
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define Constants.
-define( 'ADS_TXT_MANAGER_VERSION', '1.0.0' );
+define( 'ADS_TXT_MANAGER_VERSION', '1.0.1' );
 define( 'ADS_TXT_MANAGER_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ADS_TXT_MANAGER_URL', plugin_dir_url( __FILE__ ) );
 define( 'ADS_TXT_MANAGER_BASENAME', plugin_basename( __FILE__ ) );
