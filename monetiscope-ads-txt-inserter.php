@@ -2,14 +2,14 @@
 /**
  * Developer: Monetiscope (https://monetiscope.com)
  *
- * Plugin Name: Seller Records - Ads.txt Manager & app-ads.txt
- * Plugin URI:  https://github.com/Nitestiwary/ads-txt-manager-app-ads-txt-update
+ * Plugin Name: ads.txt Inserter
+ * Plugin URI:  https://monetiscope.com
  * Description: A lightweight, modern, beginner-friendly WordPress plugin to easily create, manage, validate, and update ads.txt and app-ads.txt files directly from the dashboard.
  * Version:     1.0.1
  * Author:      Monetiscope
  * Author URI:  https://monetiscope.com
  * License:     GPLv2 or later
- * Text Domain: ads-txt-manager-app-ads-txt-update-main
+ * Text Domain: monetiscope-ads-txt-inserter
  * Requires at least: 6.0
  * Requires PHP:      7.4
  */
