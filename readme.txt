@@ -2,7 +2,7 @@
 Contributors: monetiscopeadx
 Tags: ads.txt manager, app-ads.txt, ads.txt update, ads.txt line, app-ads.txt manager
 Requires at least: 6.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.0.1
 License: GPLv2 or later

@@ -91,21 +91,19 @@ class Ads_Txt_Core {
 
 		$file_path = ABSPATH . $filename;
 
-		// 1. First try writing via WP_Filesystem if available
-		if ( ! empty( $wp_filesystem ) && is_object( $wp_filesystem ) ) {
-			if ( $wp_filesystem->put_contents( $file_path, $content, FS_CHMOD_FILE ) ) {
-				return true;
-			}
+		// Use WP_Filesystem methods exclusively per WordPress standards.
+		if ( $wp_filesystem->exists( $file_path ) && ! $wp_filesystem->is_writable( $file_path ) ) {
+			return new WP_Error( 'file_not_writable', __( 'File root path is not writable. Using fallback routing instead.', 'monetiscope-ads-txt-inserter' ) );
 		}
 
-		// 2. Direct fallback write if server allows
-		if ( ( file_exists( $file_path ) && is_writable( $file_path ) ) || ( ! file_exists( $file_path ) && is_writable( ABSPATH ) ) ) {
-			if ( false !== @file_put_contents( $file_path, $content ) ) {
-				return true;
-			}
+		if ( ! $wp_filesystem->exists( $file_path ) && ! $wp_filesystem->is_writable( ABSPATH ) ) {
+			return new WP_Error( 'dir_not_writable', __( 'WordPress root directory is not writable. Using fallback routing instead.', 'monetiscope-ads-txt-inserter' ) );
 		}
 
-		// If physical write is blocked by server permissions, dynamic routing takes over
+		if ( ! $wp_filesystem->put_contents( $file_path, $content, FS_CHMOD_FILE ) ) {
+			return new WP_Error( 'write_failed', __( 'WordPress failed to write the file directly. Using fallback routing instead.', 'monetiscope-ads-txt-inserter' ) );
+		}
+
 		return true;
 	}
 
