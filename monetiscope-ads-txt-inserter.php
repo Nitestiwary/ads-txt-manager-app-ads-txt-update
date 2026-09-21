@@ -3,7 +3,6 @@
  * Developer: Monetiscope (https://monetiscope.com)
  *
  * Plugin Name: ads.txt Inserter
- * Plugin URI:  https://monetiscope.com
  * Description: A lightweight, modern, beginner-friendly WordPress plugin to easily create, manage, validate, and update ads.txt and app-ads.txt files directly from the dashboard.
  * Version:     1.0.1
  * Author:      Monetiscope
