@@ -87,36 +87,40 @@ function ads_txt_manager_query_vars( $vars ) {
 add_filter( 'query_vars', 'ads_txt_manager_query_vars' );
 
 /**
- * Catch the rewrite fallback trigger and output plain text.
+ * Catch the ads.txt / app-ads.txt request immediately and output plain text.
+ * Works seamlessly whether a physical file exists, rewrite rules are flushed, or neither.
  */
-function ads_txt_manager_parse_request( $wp ) {
-	if ( ! empty( $wp->matched_rule ) && ( strpos( $wp->matched_rule, '^ads\.txt$' ) !== false || strpos( $wp->matched_rule, '^app-ads\.txt$' ) !== false ) ) {
-		$trigger = get_query_var( 'ads_txt_trigger' );
-		if ( ! $trigger ) {
-			$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
-			if ( strpos( $request_uri, 'app-ads.txt' ) !== false ) {
-				$trigger = 2;
-			} elseif ( strpos( $request_uri, 'ads.txt' ) !== false ) {
-				$trigger = 1;
-			}
-		}
+function ads_txt_manager_intercept_request() {
+	// Only intercept frontend requests
+	if ( is_admin() ) {
+		return;
+	}
 
-		if ( $trigger == 1 ) {
+	$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+	$path = trim( (string) wp_parse_url( $request_uri, PHP_URL_PATH ), '/' );
+
+	// Match exact ads.txt or app-ads.txt (e.g., /ads.txt or /mysite/ads.txt)
+	if ( preg_match( '#(?:^|/)ads\.txt$#i', $path ) ) {
+		$content = get_option( 'ads_txt_manager_ads_txt', '' );
+		if ( ! empty( $content ) ) {
+			status_header( 200 );
 			header( 'Content-Type: text/plain; charset=utf-8' );
 			header( 'X-Robots-Tag: index, follow' );
-			$content = get_option( 'ads_txt_manager_ads_txt', '' );
 			echo esc_html( $content );
 			exit;
-		} elseif ( $trigger == 2 ) {
+		}
+	} elseif ( preg_match( '#(?:^|/)app-ads\.txt$#i', $path ) ) {
+		$content = get_option( 'ads_txt_manager_app_ads_txt', '' );
+		if ( ! empty( $content ) ) {
+			status_header( 200 );
 			header( 'Content-Type: text/plain; charset=utf-8' );
 			header( 'X-Robots-Tag: index, follow' );
-			$content = get_option( 'ads_txt_manager_app_ads_txt', '' );
 			echo esc_html( $content );
 			exit;
 		}
 	}
 }
-add_action( 'parse_request', 'ads_txt_manager_parse_request' );
+add_action( 'init', 'ads_txt_manager_intercept_request', 1 );
 
 /**
  * Instantiate Main core processes.
